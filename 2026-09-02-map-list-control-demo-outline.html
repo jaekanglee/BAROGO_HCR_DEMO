@@ -17,6 +17,8 @@
   --orange:#b9662a;
   --blue:#2b5bc4;
   --purple:#6b4da8;
+  --label:#2a4a72;
+  --em:#b0453a;
   color-scheme: light;
 }
 *{box-sizing:border-box;}
@@ -50,9 +52,9 @@ li::before{
   content:'●'; position:absolute; left:2px; top:.62em;
   font-size:5px; color:var(--ink-faint); line-height:0;
 }
-li strong{ color:var(--ink); font-weight:700; }
+li strong{ color:var(--label); font-weight:700; }
 li em{
-  font-style:normal; font-weight:700; color:var(--accent-ink);
+  font-style:normal; font-weight:700; color:var(--em);
 }
 li ul{ margin:8px 0 8px 4px; padding-left:18px; border-left:1px solid var(--border); }
 li ul li::before{ content:'○'; font-size:8px; color:var(--ink-faint); top:.5em; }
