@@ -159,6 +159,8 @@ hr{ border:none; border-top:1px solid var(--border); margin:40px 0; }
   <p class="sub">시연 진행 순서와 핵심 메시지의 뼈대. 문장은 직접 붙여서 쓰기.</p>
   <div class="meta">
     <span>본편 30분 · 질의응답 10분</span>
+    <span>배포 26년 9월 15일(화) · v1.0.0</span>
+    <span>Android / iOS</span>
     <span>대상: 허브·총판 관리자</span>
     <span>실기기 미러링</span>
   </div>
@@ -215,7 +217,7 @@ hr{ border:none; border-top:1px solid var(--border); margin:40px 0; }
           <li>상점 하나 선택 → 지도가 그 상점 주문만 남기고 자동 정렬
             <ul>
               <li><strong>전체 탭</strong> — 설정에 따라 지연 주문만 보이거나, 진행 중인 배달까지 다 보임
-                <ul><li>범위 토글로 "지연만" ↔ "모든 주문" 전환</li></ul>
+                <ul><li>설정의 <em>배달 보기</em>에서 "지연배달" ↔ "모든배달" 전환 — 모든배달은 접수 + 진행 중(배차·픽업)까지이고 완료·취소는 안 나옴</li></ul>
               </li>
               <li><strong>배차지연 탭</strong> — 아직 라이더가 없는 주문
                 <ul>
@@ -262,7 +264,7 @@ hr{ border:none; border-top:1px solid var(--border); margin:40px 0; }
         <ul>
           <li><strong>오버레이 역할</strong> — 주문 경로색(접수·배차·픽업) / 라이더 상태색(운행·대기·휴식)</li>
           <li><strong>겹침 UX</strong> — 한 지점에 여러 개 겹치면 선택 목록 노출</li>
-          <li><strong>카메라 무브</strong> — 항목 탭 시 자동 재중심, 내 위치 추적(수동 드래그 시 일시정지)</li>
+          <li><strong>카메라 무브</strong> — 항목 탭 시 자동 재중심 / 내 위치 버튼은 한 번 누르면 위치 추적, 한 번 더 누르면 보는 방향까지 맞춤 (지도를 손으로 움직이면 추적 일시정지)</li>
           <li><strong>핏바운즈</strong> — 상점 선택 시 그 상점 주문만 남기고 자동 맞춤 / 전체보기는 화면 내 전체 맞춤</li>
           <li><strong>지연 기준 설정</strong> — 배차지연 기본 5분 · 픽업지연 유예 기본 0분, 슬라이더로 즉시 조절·초기화
             <ul><li>픽업 예정시각 기준 왼쪽=배차지연 / 오른쪽(초과)=픽업지연</li></ul>
@@ -558,12 +560,13 @@ hr{ border:none; border-top:1px solid var(--border); margin:40px 0; }
           <li><strong>"제가 지연 기준 바꾸면 다른 사람 화면도 바뀌나요?"</strong> — 기기 단위 저장이라 서로 영향 없음</li>
           <li><strong>"계정을 새로 만들어야 하나요?"</strong> — 기존 관리자 계정·권한 그대로 로그인</li>
           <li><strong>"권한이 없어서 메뉴가 안 보이면요?"</strong> — 총판·허브 마스터에게 요청. 데스크탑에서 부여하면 앱에도 즉시 반영</li>
-          <li><strong>"검색어가 저장되나요?"</strong> — 지금은 최근 검색어 저장 기능 없음 (입력하는 대로 걸러지는 결과만)</li>
+          <li><strong>"다른 허브를 왜 못 고르죠?"</strong> — 타허브 선택은 모바일 전용 권한(1307011)이라 데스크탑과 매핑되지 않고 따로 관리됨. 총판 소속이면 권한 없어도 자동으로 됨</li>
+          <li><strong>"검색어가 저장되나요?"</strong> — 최근 검색어 저장 기능은 없음. 입력하는 대로 걸러지는 결과만 나옴 (검색 UX 개편 때 제거됨)</li>
         </ul>
       </li>
       <li>도입·일정 관련
         <ul>
-          <li><strong>"언제부터 쓸 수 있나요?"</strong> — 배포일 안내 + 스토어에서 "바로고 허브컨트롤룸" 검색</li>
+          <li><strong>"언제부터 쓸 수 있나요?"</strong> — 26년 9월 15일(화), Android·iOS 동시. 스토어에서 "바로고 허브컨트롤룸" 검색</li>
           <li><strong>"구 관리자앱은 언제 없어지나요?"</strong> — 종료 시점은 별도 안내 예정. <em>확정 일정을 아는 게 아니면 단정하지 말 것</em></li>
           <li><strong>"교육 자료가 있나요?"</strong> — 메뉴명이 직관적이라 써보면 익힘, 필요하면 별도 안내</li>
         </ul>
@@ -630,6 +633,7 @@ hr{ border:none; border-top:1px solid var(--border); margin:40px 0; }
       <li><strong>정산</strong> — 배달 내역 기간 조회 · 출금 신청</li>
       <li><strong>자동화</strong> — 허브 자동 지원금 규칙 등록(우천·폭염 등, 건별 수기 입력 대체)</li>
       <li><strong>공지</strong> — 총판·라이더·상점 공지 작성, 라이더 중요 공지 노출 직접 제어</li>
+      <li><strong>상담</strong> — 채널톡 인앱 상담, 상담 화면에 배달 정보가 자동으로 함께 전달됨</li>
     </ul>
 
     <p class="fig-label">실제 화면 — 구 앱에선 조회만 되던 것들</p>
