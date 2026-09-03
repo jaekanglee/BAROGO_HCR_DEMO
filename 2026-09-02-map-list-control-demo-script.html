@@ -1,0 +1,1482 @@
+<title>지도관제 시연 대본</title>
+<meta name="description" content="지도관제·목록관제 실기기 시연 30분 진행 대본과 발표자 참고 자료">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+:root{
+  --bg:#f7f7f6;
+  --surface:#ffffff;
+  --surface-2:#f0f1f0;
+  --ink:#17191a;
+  --ink-soft:#565a58;
+  --ink-faint:#8b8f8c;
+  --border:#e2e3e1;
+  --border-soft:#ececea;
+  --accent:#0f6e5c;
+  --accent-ink:#0a4f42;
+  --accent-soft:#e1f0ec;
+  --accent-soft-2:#c7e6db;
+  --orange:#c8712f;
+  --orange-soft:#f6ece0;
+  --blue:#2f63c9;
+  --blue-soft:#e6ecf9;
+  --purple:#7454b0;
+  --purple-soft:#efe9f7;
+  --warn:#a5720b;
+  --warn-soft:#f6efdc;
+  --danger:#b3402f;
+  --danger-soft:#f7e6e1;
+  --shadow: 0 1px 2px rgba(20,20,20,.05), 0 8px 24px -12px rgba(20,20,20,.14);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#131414;
+    --surface:#1b1c1c;
+    --surface-2:#222323;
+    --ink:#edeeed;
+    --ink-soft:#a8aba9;
+    --ink-faint:#7a7d7b;
+    --border:#2e2f2f;
+    --border-soft:#252626;
+    --accent:#4fbfa2;
+    --accent-ink:#8fe0c8;
+    --accent-soft:#20302c;
+    --accent-soft-2:#204436;
+    --orange:#e0a066;
+    --orange-soft:#332a20;
+    --blue:#7fa2ec;
+    --blue-soft:#212739;
+    --purple:#b39ce0;
+    --purple-soft:#28243a;
+    --warn:#e0bb5c;
+    --warn-soft:#332c1a;
+    --danger:#e08a78;
+    --danger-soft:#332320;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#131414;
+  --surface:#1b1c1c;
+  --surface-2:#222323;
+  --ink:#edeeed;
+  --ink-soft:#a8aba9;
+  --ink-faint:#7a7d7b;
+  --border:#2e2f2f;
+  --border-soft:#252626;
+  --accent:#4fbfa2;
+  --accent-ink:#8fe0c8;
+  --accent-soft:#20302c;
+  --accent-soft-2:#204436;
+  --orange:#e0a066;
+  --orange-soft:#332a20;
+  --blue:#7fa2ec;
+  --blue-soft:#212739;
+  --purple:#b39ce0;
+  --purple-soft:#28243a;
+  --warn:#e0bb5c;
+  --warn-soft:#332c1a;
+  --danger:#e08a78;
+  --danger-soft:#332320;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Noto Sans KR', -apple-system, 'Malgun Gothic', sans-serif;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  word-break:keep-all;
+}
+::selection{ background:var(--accent-soft-2); color:var(--accent-ink); }
+
+.mono{ font-family:'JetBrains Mono', ui-monospace, monospace; }
+
+a{ color:var(--accent); }
+
+.page{
+  max-width:1180px;
+  margin:0 auto;
+  padding:0 24px 96px;
+  display:grid;
+  grid-template-columns:220px minmax(0,1fr);
+  gap:48px;
+}
+@media (max-width:920px){
+  .page{ grid-template-columns:1fr; }
+}
+
+/* ---------- HERO / HEADER ---------- */
+.hero{
+  grid-column:1 / -1;
+  padding:56px 0 28px;
+  border-bottom:1px solid var(--border);
+}
+.hero-eyebrow{
+  font-family:'JetBrains Mono', monospace;
+  font-size:12.5px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:700;
+  margin:0 0 14px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.hero-eyebrow .dot{ width:6px;height:6px;border-radius:50%;background:var(--accent); }
+.hero h1{
+  font-size:clamp(30px,4.4vw,46px);
+  font-weight:900;
+  letter-spacing:-.02em;
+  margin:0 0 14px;
+  text-wrap:balance;
+  color:var(--ink);
+}
+.hero-lede{
+  max-width:64ch;
+  color:var(--ink-soft);
+  font-size:16.5px;
+  margin:0 0 26px;
+}
+.hero-lede strong{ color:var(--ink); font-weight:700; }
+
+.meta-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.meta-chip{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  padding:10px 16px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:10px;
+  min-width:110px;
+}
+.meta-chip .k{
+  font-size:11px;
+  color:var(--ink-faint);
+  font-family:'JetBrains Mono',monospace;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+.meta-chip .v{
+  font-size:15px;
+  font-weight:700;
+  color:var(--ink);
+}
+
+/* ---------- SIDEBAR / TIMELINE RAIL ---------- */
+.rail{
+  position:sticky;
+  top:24px;
+  align-self:start;
+  max-height:calc(100vh - 48px);
+  overflow-y:auto;
+  padding-right:6px;
+}
+@media (max-width:920px){
+  .rail{
+    position:static;
+    max-height:none;
+    display:flex;
+    overflow-x:auto;
+    overflow-y:visible;
+    gap:8px;
+    padding:14px 0;
+    border-bottom:1px solid var(--border);
+    margin-bottom:8px;
+  }
+  .rail-title{ display:none; }
+  .rail-line{ display:none; }
+  .rail-item{ flex:0 0 auto; padding:8px 12px !important; border-left:none !important; border:1px solid var(--border); border-radius:20px; }
+  .rail-item .r-time{ display:none; }
+}
+.rail-title{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+  margin:0 0 12px;
+  padding-left:16px;
+}
+.rail-list{
+  position:relative;
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+.rail-line{
+  position:absolute;
+  left:5px; top:6px; bottom:6px;
+  width:1px;
+  background:var(--border);
+}
+.rail-item{
+  position:relative;
+  padding:7px 0 7px 16px;
+  border-left:2px solid transparent;
+  cursor:pointer;
+}
+.rail-item::before{
+  content:'';
+  position:absolute;
+  left:-1px; top:14px;
+  width:7px;height:7px;
+  border-radius:50%;
+  background:var(--border);
+  border:2px solid var(--bg);
+}
+.rail-item.active{ border-left-color:var(--accent); }
+.rail-item.active::before{ background:var(--accent); }
+.rail-item a{
+  text-decoration:none;
+  display:flex;
+  flex-direction:column;
+  gap:1px;
+}
+.rail-item .r-time{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  color:var(--ink-faint);
+  font-variant-numeric:tabular-nums;
+}
+.rail-item.active .r-time{ color:var(--accent); }
+.rail-item .r-label{
+  font-size:13px;
+  color:var(--ink-soft);
+  font-weight:500;
+}
+.rail-item.active .r-label{ color:var(--ink); font-weight:700; }
+
+/* ---------- MAIN ---------- */
+main{ min-width:0; }
+
+.intro-block{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:28px 30px;
+  margin:36px 0 28px;
+  box-shadow:var(--shadow);
+}
+.intro-block h2{
+  font-size:13px;
+  font-family:'JetBrains Mono',monospace;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin:0 0 18px;
+}
+.thesis-list{
+  list-style:none;
+  margin:0; padding:0;
+  display:grid;
+  gap:16px;
+}
+.thesis-list li{
+  display:grid;
+  grid-template-columns:34px 1fr;
+  gap:14px;
+}
+.thesis-num{
+  width:34px;height:34px;
+  border-radius:9px;
+  background:var(--accent-soft);
+  color:var(--accent-ink);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'JetBrains Mono',monospace;
+  font-weight:700;
+  font-size:14px;
+}
+.thesis-list p{ margin:0; color:var(--ink-soft); font-size:15px; }
+.thesis-list strong{ color:var(--ink); }
+
+.legend{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin:20px 0 40px;
+}
+@media (max-width:640px){ .legend{ grid-template-columns:1fr; } }
+.legend-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:16px 18px;
+}
+.legend-card .lc-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;
+  font-weight:700;
+  color:var(--accent);
+  margin-bottom:6px;
+  display:block;
+}
+.legend-card p{ margin:0; font-size:13.5px; color:var(--ink-soft); }
+
+h2.section-title{
+  font-size:22px;
+  font-weight:900;
+  letter-spacing:-.01em;
+  margin:52px 0 18px;
+  padding-top:6px;
+  color:var(--ink);
+  text-wrap:balance;
+}
+h2.section-title .num{
+  font-family:'JetBrains Mono',monospace;
+  color:var(--accent);
+  margin-right:10px;
+  font-weight:700;
+}
+
+/* ---------- SEGMENT CARD ---------- */
+.segment{
+  scroll-margin-top:24px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:28px 30px 30px;
+  margin:20px 0 28px;
+  box-shadow:var(--shadow);
+}
+.segment.hero-segment{
+  border-color:var(--accent);
+  box-shadow:0 0 0 1px var(--accent), var(--shadow);
+}
+.seg-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+  margin-bottom:6px;
+}
+.seg-title{
+  font-size:19px;
+  font-weight:700;
+  margin:0;
+  color:var(--ink);
+}
+
+.heart-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-size:12.5px;
+  color:var(--accent-ink);
+  background:var(--accent-soft);
+  border-radius:8px;
+  padding:8px 12px;
+  margin:14px 0 18px;
+  font-weight:700;
+}
+
+.subhead{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11.5px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+  margin:22px 0 10px;
+}
+.subhead:first-of-type{ margin-top:18px; }
+
+.ops-list{
+  margin:0 0 4px;
+  padding-left:0;
+  list-style:none;
+  counter-reset:ops;
+  display:grid;
+  gap:9px;
+}
+.ops-list li{
+  counter-increment:ops;
+  position:relative;
+  padding-left:34px;
+  font-size:14.5px;
+  color:var(--ink-soft);
+}
+.ops-list li::before{
+  content:counter(ops);
+  position:absolute;
+  left:0; top:0;
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;
+  font-weight:700;
+  color:var(--accent);
+  background:var(--accent-soft);
+  width:22px;height:22px;
+  border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+}
+.ops-list li strong{ color:var(--ink); }
+
+.script{
+  background:var(--surface-2);
+  border-left:3px solid var(--accent);
+  border-radius:0 10px 10px 0;
+  padding:18px 22px;
+  margin:6px 0 4px;
+  font-size:15.5px;
+  color:var(--ink);
+}
+.script p{ margin:0 0 14px; }
+.script p:last-child{ margin-bottom:0; }
+.script em.pause{
+  font-style:normal;
+  text-decoration:underline;
+  text-decoration-style:dotted;
+  text-decoration-color:var(--ink-faint);
+  text-underline-offset:3px;
+  color:var(--ink-soft);
+}
+.script strong{
+  background:linear-gradient(transparent 62%, var(--accent-soft-2) 62%);
+  font-weight:700;
+  padding:0 1px;
+}
+.cue{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;
+  color:var(--orange);
+  background:var(--orange-soft);
+  padding:3px 10px;
+  border-radius:100px;
+  margin:2px 0;
+}
+
+.small-note{
+  font-size:13.5px;
+  color:var(--ink-soft);
+  margin:10px 0 0;
+}
+.small-note strong{ color:var(--ink); }
+
+/* ---------- BEAT (조작+대본 통합 흐름) ---------- */
+.state-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:13px;
+  color:var(--ink-soft);
+  background:var(--surface-2);
+  border:1px dashed var(--border);
+  border-radius:100px;
+  padding:6px 14px;
+  margin:2px 0 16px;
+}
+.state-tag .dot2{ width:6px;height:6px;border-radius:50%;background:var(--ink-faint); flex:none; }
+
+.beat{ margin:18px 0 22px; }
+.beat-head{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  margin-bottom:9px;
+}
+.beat-num{
+  flex:none;
+  width:24px;height:24px;
+  border-radius:7px;
+  background:var(--accent);
+  color:var(--surface);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'JetBrains Mono',monospace;
+  font-weight:700;
+  font-size:12px;
+  margin-top:1px;
+}
+.beat-action{
+  font-size:13.5px;
+  font-weight:700;
+  color:var(--accent-ink);
+  line-height:1.5;
+  padding-top:2px;
+}
+.beat-action .tap{
+  font-weight:400;
+  color:var(--ink-faint);
+  font-family:'JetBrains Mono',monospace;
+  font-size:11.5px;
+  margin-right:6px;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+.beat-note{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:12.5px;
+  color:var(--ink-faint);
+  background:var(--surface-2);
+  border:1px dashed var(--border);
+  border-radius:8px;
+  padding:9px 13px;
+  margin:14px 0;
+}
+.beat-note .beat-num{ background:var(--surface); color:var(--ink-faint); border:1px solid var(--border); }
+.beat-note strong{ color:var(--ink-soft); }
+
+.transition{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:20px;
+  padding-top:18px;
+  border-top:1px dashed var(--border);
+}
+.transition .arrow{
+  color:var(--accent);
+  font-family:'JetBrains Mono',monospace;
+  font-weight:700;
+  flex:none;
+}
+.transition p{
+  margin:0;
+  font-size:14.5px;
+  color:var(--ink-soft);
+  font-style:italic;
+}
+
+/* ---------- ADMONITIONS ---------- */
+.admon{
+  display:grid;
+  grid-template-columns:36px 1fr;
+  gap:14px;
+  border-radius:10px;
+  padding:14px 16px 14px 14px;
+  margin:16px 0;
+  font-size:14px;
+  color:var(--ink-soft);
+}
+.admon .ai{
+  width:26px;height:26px;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'JetBrains Mono',monospace;
+  font-weight:700;
+  font-size:13px;
+  flex:none;
+}
+.admon p{ margin:0 0 6px; }
+.admon p:last-child{ margin-bottom:0; }
+.admon strong{ color:var(--ink); }
+.admon .at{ font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; display:block; margin-bottom:4px; }
+
+.admon.note{ background:var(--blue-soft); }
+.admon.note .ai{ background:var(--blue); color:#fff; }
+.admon.note .at{ color:var(--blue); }
+
+.admon.tip{ background:var(--accent-soft); }
+.admon.tip .ai{ background:var(--accent); color:#fff; }
+.admon.tip .at{ color:var(--accent-ink); }
+
+.admon.warning{ background:var(--warn-soft); }
+.admon.warning .ai{ background:var(--warn); color:#231a03; }
+.admon.warning .at{ color:var(--warn); }
+
+/* ---------- TABLES ---------- */
+.tbl-wrap{ overflow-x:auto; margin:14px 0; border-radius:12px; border:1px solid var(--border); }
+table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:13.5px;
+  background:var(--surface);
+}
+th, td{
+  padding:11px 16px;
+  text-align:left;
+  border-bottom:1px solid var(--border-soft);
+  vertical-align:top;
+}
+thead th{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+  background:var(--surface-2);
+  border-bottom:1px solid var(--border);
+}
+tbody tr:last-child td{ border-bottom:none; }
+tbody tr:hover{ background:var(--surface-2); }
+td strong, th strong{ color:var(--ink); }
+.num-cell{ font-family:'JetBrains Mono',monospace; font-variant-numeric:tabular-nums; }
+
+.route-dot{ display:inline-block; width:9px;height:9px;border-radius:50%; margin-right:6px; }
+.route-green{ background:var(--accent); }
+.route-orange{ background:var(--orange); }
+.route-blue{ background:var(--blue); }
+.route-purple{ background:var(--purple); }
+
+/* ---------- COMPARE ROWS ---------- */
+.compare{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin:16px 0;
+}
+@media (max-width:640px){ .compare{ grid-template-columns:1fr; } }
+.compare-card{
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:16px 18px;
+}
+.compare-card.a{ border-left:3px solid var(--danger); }
+.compare-card.b{ border-left:3px solid var(--accent); }
+.compare-card h4{ margin:0 0 6px; font-size:13px; font-family:'JetBrains Mono',monospace; text-transform:uppercase; letter-spacing:.06em; }
+.compare-card.a h4{ color:var(--danger); }
+.compare-card.b h4{ color:var(--accent-ink); }
+.compare-card p{ margin:0; font-size:14px; color:var(--ink-soft); }
+
+/* ---------- DELAY TIMELINE ---------- */
+.delay-timeline{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:22px 24px 20px;
+  margin:16px 0;
+}
+.dt-caption{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+  margin:0 0 34px;
+  text-align:center;
+}
+.dt-track{
+  position:relative;
+  height:6px;
+  background:var(--border-soft);
+  border-radius:3px;
+  margin:0 6px;
+}
+.dt-fill{
+  position:absolute;
+  top:0; height:100%;
+  border-radius:3px;
+}
+.dt-fill-a{ background:var(--orange); }
+.dt-fill-b{ background:var(--blue); }
+.dt-center{
+  position:absolute;
+  left:50%; top:50%;
+  transform:translate(-50%,-50%);
+  width:15px; height:15px;
+  border-radius:50%;
+  background:var(--ink);
+  border:3px solid var(--surface);
+  box-shadow:0 0 0 1px var(--border);
+  z-index:2;
+}
+.dt-center-label{
+  position:absolute;
+  left:50%; top:-30px;
+  transform:translateX(-50%);
+  text-align:center;
+  font-size:12px;
+  font-weight:700;
+  color:var(--ink);
+  white-space:nowrap;
+}
+.dt-tick{
+  position:absolute;
+  top:50%;
+  width:2px; height:14px;
+  background:var(--ink-faint);
+  transform:translate(-50%,-50%);
+  z-index:1;
+}
+.dt-tick-label{
+  position:absolute;
+  top:16px;
+  transform:translateX(-50%);
+  font-size:11px;
+  color:var(--ink-faint);
+  white-space:nowrap;
+  text-align:center;
+  line-height:1.4;
+}
+.dt-zones{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-top:44px;
+}
+@media (max-width:560px){ .dt-zones{ grid-template-columns:1fr; } }
+.dt-zone{
+  border-radius:10px;
+  padding:14px 16px;
+  font-size:13.5px;
+}
+.dt-zone.a{ background:var(--orange-soft); }
+.dt-zone.b{ background:var(--blue-soft); }
+.dt-zone strong{ display:block; font-size:13.5px; margin-bottom:4px; }
+.dt-zone.a strong{ color:var(--orange); }
+.dt-zone.b strong{ color:var(--blue); }
+.dt-zone span{ color:var(--ink-soft); }
+.dt-note{ margin:14px 2px 0; font-size:12.5px; color:var(--ink-faint); }
+
+/* ---------- CHECKLIST ---------- */
+.checklist{ list-style:none; margin:14px 0; padding:0; display:grid; gap:10px; }
+.checklist li{
+  display:grid;
+  grid-template-columns:22px 1fr;
+  gap:12px;
+  font-size:14.5px;
+  color:var(--ink-soft);
+  align-items:start;
+}
+.checklist .box{
+  width:20px;height:20px;
+  border-radius:5px;
+  border:1.5px solid var(--accent);
+  margin-top:2px;
+  flex:none;
+}
+.checklist strong{ color:var(--ink); }
+
+/* ---------- STRIKE / DIFF ---------- */
+.diff-item{
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:16px 18px;
+  margin:12px 0;
+}
+.diff-item .num{
+  font-family:'JetBrains Mono',monospace;
+  color:var(--accent);
+  font-weight:700;
+  margin-right:6px;
+}
+.diff-item p{ margin:6px 0 0; font-size:14px; color:var(--ink-soft); }
+.diff-item s{ color:var(--danger); text-decoration-color:var(--danger); }
+
+/* ---------- MAPPING TABLE ROWS ---------- */
+.arrow-cell{ color:var(--ink-faint); }
+
+/* ---------- APPENDIX ---------- */
+.appendix-banner{
+  margin:64px 0 8px;
+  padding:22px 26px;
+  border-radius:16px;
+  background:linear-gradient(135deg, var(--accent-soft), var(--surface));
+  border:1px solid var(--accent-soft-2);
+}
+.appendix-banner .ap-eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11.5px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--accent-ink);
+  font-weight:700;
+  margin-bottom:8px;
+  display:block;
+}
+.appendix-banner h2{ margin:0 0 8px; font-size:24px; font-weight:900; color:var(--ink); }
+.appendix-banner p{ margin:0; color:var(--ink-soft); font-size:14.5px; max-width:70ch; }
+
+.concept-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:26px 28px;
+  margin:20px 0 28px;
+  box-shadow:var(--shadow);
+}
+.concept-card h3{
+  font-size:17px;
+  font-weight:700;
+  margin:0 0 6px;
+  color:var(--ink);
+}
+.concept-card .sub{ color:var(--ink-faint); font-size:13.5px; margin:0 0 16px; }
+.concept-card p{ font-size:14.5px; color:var(--ink-soft); }
+
+.footer-note{
+  margin-top:60px;
+  padding-top:24px;
+  border-top:1px solid var(--border);
+  font-size:13px;
+  color:var(--ink-faint);
+  text-align:center;
+}
+</style>
+
+<div class="page">
+
+  <header class="hero">
+    <p class="hero-eyebrow"><span class="dot"></span>HCR MOBILE · 실기기 미러링 시연</p>
+    <h1>지도관제 시연 대본</h1>
+    <p class="hero-lede">폰을 미러링해 직접 조작하면서 진행하는 시연 대본이다. 슬라이드는 쓰지 않는다. <strong>조작 순서와 읽을 문장을 짝지어 두었고</strong> 구간을 넘어갈 때 쓸 연결 문장을 하나씩 붙였다.</p>
+    <div class="meta-row">
+      <div class="meta-chip"><span class="k">본편</span><span class="v">30분</span></div>
+      <div class="meta-chip"><span class="k">질의응답</span><span class="v">10분</span></div>
+      <div class="meta-chip"><span class="k">대상</span><span class="v">허브·총판 관리자</span></div>
+      <div class="meta-chip"><span class="k">방식</span><span class="v">실기기 미러링</span></div>
+    </div>
+  </header>
+
+  <nav class="rail" aria-label="시연 타임라인">
+    <p class="rail-title">타임라인</p>
+    <ul class="rail-list" id="railList">
+      <li class="rail-line" style="list-style:none;position:absolute;"></li>
+      <li class="rail-item" data-target="s0"><a href="#s0"><span class="r-time">1</span><span class="r-label">여는 말</span></a></li>
+      <li class="rail-item" data-target="s1"><a href="#s1"><span class="r-time">2</span><span class="r-label">상점 모드</span></a></li>
+      <li class="rail-item" data-target="s2"><a href="#s2"><span class="r-time">3</span><span class="r-label">지연 두 종류</span></a></li>
+      <li class="rail-item" data-target="s3"><a href="#s3"><span class="r-time">4</span><span class="r-label">라이더 모드</span></a></li>
+      <li class="rail-item" data-target="s4"><a href="#s4"><span class="r-time">5</span><span class="r-label">검색 근거</span></a></li>
+      <li class="rail-item" data-target="s5"><a href="#s5"><span class="r-time">6</span><span class="r-label">지연 기준 설정</span></a></li>
+      <li class="rail-item" data-target="s6"><a href="#s6"><span class="r-time">7</span><span class="r-label">두 화면 역할</span></a></li>
+      <li class="rail-item" data-target="s7"><a href="#s7"><span class="r-time">8</span><span class="r-label">목록관제</span></a></li>
+      <li class="rail-item" data-target="s8"><a href="#s8"><span class="r-time">9</span><span class="r-label">닫는 말</span></a></li>
+      <li class="rail-item" data-target="ref"><a href="#ref"><span class="r-time">REF</span><span class="r-label">참고 자료</span></a></li>
+      <li class="rail-item" data-target="apA"><a href="#apA"><span class="r-time">부록 A</span><span class="r-label">지연이란</span></a></li>
+      <li class="rail-item" data-target="apB"><a href="#apB"><span class="r-time">부록 B</span><span class="r-label">설정 게이지</span></a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <h2 class="section-title" style="margin-top:36px;"><span class="num">§</span>진행</h2>
+
+    <!-- SEGMENT 0 -->
+    <section class="segment" id="s0">
+      <div class="seg-head">
+        <div>
+          <h3 class="seg-title">여는 말 — 왜 새로 만들었나</h3>
+        </div>
+      </div>
+
+      <p class="state-tag"><span class="dot2"></span>아직 폰을 들지 않는다 · 화면은 지도관제가 떠 있는 상태로 두고 청중을 본다</p>
+
+      <div class="script">
+        <p>안녕하세요. 오늘 새로 나온 허브 컨트롤룸 모바일 앱을 보여드리겠습니다. 30분 정도 걸리고 궁금한 점은 마지막에 함께 받겠습니다.</p>
+        <p>먼저 이걸 왜 새로 만들었는지부터 말씀드리겠습니다. 세 가지 이유가 있었습니다.</p>
+        <p>첫째, <strong>지금 쓰시는 관리자 앱은 기능이 제한적입니다.</strong> 꼭 필요한 것만 담긴 가벼운 앱이라 정작 중요한 일은 결국 PC 앞으로 돌아가서 처리하셔야 했습니다.</p>
+        <p>둘째, <strong>요즘 앱을 쓰고 있다는 느낌을 드리지 못했습니다.</strong> 화면 구성이나 조작 방식이 오래된 방식에 머물러 있어서 손에 익기까지 시간이 걸렸습니다.</p>
+        <p>셋째, 겉으로는 안 보이지만 <strong>내부 시스템도 오래된 구조에 묶여 있었습니다.</strong> 오라클과 O2O에 의존하던 것을 ZOO로 이관해서 화면 뒤에서 데이터가 오가는 방식 자체를 새 플랫폼으로 옮겼습니다.</p>
+        <p>이 세 가지를 한꺼번에 개편한 것이 오늘 보여드릴 허브 컨트롤룸 모바일입니다. 허브 컨트롤룸은 이미 웹으로 쓰고 계시지만 이번에는 <strong>웹을 그대로 앱에 옮겨 담은 게 아니라 처음부터 앱에 맞게 다시 만들었습니다.</strong> 모바일에서 쓰기 좋게 최적화했다는 뜻입니다.</p>
+        <p><span class="cue">— 여기서 한 박자 쉬고 —</span></p>
+        <p>그래서 무엇이 달라졌는지, 네 가지로 말씀드리겠습니다.</p>
+        <p><strong>하나, 배달 관제와 라이더 관제를 한 화면에 합쳤습니다.</strong> 지금은 배달 보는 곳과 라이더 보는 곳이 따로 있어서 이 화면 저 화면을 옆으로 옮겨 다니셔야 합니다. 새 앱은 그 이동을 없애고 <strong>필요한 것을 그 자리에서 한 단계씩 파고드는 방식</strong>으로 바꿨습니다. 흐름이 끊기지 않습니다.</p>
+        <p><strong>둘, 지도 하나에서 전부 봅니다.</strong> 상점이 어디 있는지, 그 상점에 배달이 몇 건 걸려 있는지, 라이더가 어디 있는지, 그 라이더가 지금 무엇을 하고 있는지를 같은 지도 위에서 함께 봅니다.</p>
+        <p><strong>셋, 기능을 거의 다 옮겨 왔습니다.</strong> 가볍게 몇 가지만 되던 앱이 아니라, PC에서 하시던 일을 앱에서 하실 수 있게 했습니다. 아직 빠진 게 있을 수는 있습니다. 쓰시면서 없는 기능을 발견하시면 말씀해 주세요. 최대한 담는 것이 목표입니다.</p>
+        <p><strong>넷, 라이더 앱과 화면을 통일했습니다.</strong> 라이더분들이 쓰는 앱과 생김새와 조작 방식을 맞췄습니다. 라이더에게 설명하실 때도 서로 말이 통하고 바로고 앱이라는 느낌도 하나로 모입니다.</p>
+        <p>시간이 짧으니 오늘은 <strong>지도관제 위주로 압축해서</strong> 보여드리겠습니다. 나머지 부가 기능들은 메뉴 이름과 화면 제목이 직관적이라 직접 써보시면 자연스럽게 손에 익으실 겁니다.</p>
+        <p>오늘 보실 건 세 가지입니다. 첫째, <strong>화면을 옮기지 않습니다.</strong> 둘째, <strong>지연은 두 종류입니다.</strong> 셋째, <strong>검색이 왜 걸렸는지 이유를 말해줍니다.</strong> <em class="pause">이 세 가지가 전부입니다.</em></p>
+      </div>
+
+      <div class="admon tip">
+        <div class="ai">✓</div>
+        <div><span class="at">Tip</span>
+          <p><strong>여는 말이 길어지기 쉽다.</strong> 배경 세 가지와 성과 네 가지를 다 읽으면 지루해지니 청중 반응을 보며 <strong>성과 셋·넷은 한 문장씩으로 줄여도 된다.</strong></p>
+        </div>
+      </div>
+
+      <div class="transition"><span class="arrow">→</span><p>말로 설명하는 것보다 직접 보시는 게 빠릅니다. 화면 보시겠습니다.</p></div>
+    </section>
+
+    <!-- SEGMENT 1 -->
+    <section class="segment hero-segment" id="s1">
+      <div class="seg-head">
+        <div>
+          <h3 class="seg-title">지도관제 상점 모드</h3>
+        </div>
+      </div>
+      <div class="heart-tag">♥ 시연의 심장 — 가장 공을 들이는 화면이고, 나머지는 이 화면을 보조하는 이야기로 배치했다</div>
+
+      <div class="beat">
+        <div class="beat-head"><span class="beat-num">1</span><p class="beat-action">앱을 완전히 종료했다 다시 실행 — 로그인 직후 화면을 그대로 보여준다</p></div>
+        <div class="script">
+          <p>로그인하면 바로 이 화면입니다. 별도 메뉴를 고르지 않습니다. 우리 허브의 상점과 주문, 출근한 라이더가 전부 이 지도 위에 있습니다.</p>
+        </div>
+      </div>
+
+      <div class="beat">
+        <div class="beat-head"><span class="beat-num">2</span><p class="beat-action">하단 목록을 중간 높이로 올려 상점목록 노출</p></div>
+        <div class="script">
+          <p>아래 목록을 보시면 <strong>이름순도, 등록순도 아닙니다. 지금 지연이 생긴 상점만 올라오고 그 중에서도 지연이 많은 순서입니다.</strong> 맨 위가 지금 가장 문제인 상점입니다. 문제 없는 상점은 아예 화면을 차지하지 않습니다.</p>
+        </div>
+      </div>
+
+      <div class="beat">
+        <div class="beat-head"><span class="beat-num">3</span><p class="beat-action">목록 맨 위 상점 탭</p></div>
+        <div class="script">
+          <p>탭하면 지도가 그 상점 주문만 남기고 알아서 맞춰집니다. 확대하고 축소할 필요가 없습니다.</p>
+        </div>
+      </div>
+
+      <div class="beat">
+        <div class="beat-head"><span class="beat-num">4</span><p class="beat-action">상단 토글을 <strong>주문목록</strong>으로 전환 → 전체 / 배차지연 / 픽업지연 세 탭 짚기</p></div>
+        <div class="script">
+          <p>여기가 이 화면의 핵심 설계입니다. 지연을 한 덩어리로 보지 않습니다. <strong>배차지연은 아직 배차가 안 되고 있는 주문, 적합한 라이더를 찾아 배차를 넣어줘야 하는 주문입니다.</strong> <strong>픽업지연은 배차는 됐는데 라이더가 아직 가게에 도착하지 않은 주문, 라이더에게 전화할 일입니다.</strong> 해야 할 일의 종류가 다르니까 탭을 나눴습니다.</p>
+        </div>
+      </div>
+
+      <div class="beat">
+        <div class="beat-head"><span class="beat-num">5</span><p class="beat-action"><strong>배차지연</strong> 탭 → 접수 주문 한 건 탭 <strong>(여기서 멈춤)</strong></p></div>
+        <div class="script">
+          <p><em class="pause">방금 화면이 바뀌지 않았습니다.</em> 목록으로 나가지도, 배차 화면을 새로 열지도 않았습니다. <strong>주문을 눌렀더니 라이더 선택 화면이 같은 자리에서 열렸습니다.</strong> 오늘 하나만 기억하신다면 이 동작입니다.</p>
+        </div>
+      </div>
+
+      <div class="beat">
+        <div class="beat-head"><span class="beat-num">6</span><p class="beat-action">라이더 한 명 탭 → 확인창 제목 읽기 → <strong>즉시배차</strong></p></div>
+        <div class="script">
+          <p>확인창 제목을 보시면 라이더 이름 옆에 <strong>지금 배차 몇 건, 픽업 몇 건을 들고 있는지</strong> 같이 나옵니다. 이 라이더가 얼마나 바쁜지 모르는 채로 배차하지 않도록 해둔 장치입니다. 왼쪽이 즉시배차, 오른쪽이 배차요청입니다.</p>
+        </div>
+      </div>
+
+      <div class="beat">
+        <div class="beat-head"><span class="beat-num">7</span><p class="beat-action">접수 주문 하나 길게 누르기 → 5건 더 탭해 6건 → 하단 배차 버튼 → 즉시배차</p></div>
+        <div class="script">
+          <p>같은 방향으로 가는 주문 여러 건을 한 라이더에게 묶을 때는 주문을 길게 누릅니다. <strong>한 번에 최대 여섯 건까지</strong> 묶을 수 있습니다.</p>
+        </div>
+      </div>
+
+      <p class="small-note"><strong>참고</strong> — 지도 위 주문 경로 색:
+        <span class="route-dot route-green"></span>접수 주문 &nbsp;
+        <span class="route-dot route-orange"></span>배차·공유배차 &nbsp;
+        <span class="route-dot route-blue"></span>픽업·공유픽업. 색을 물어보면 이걸로 답하고 넘어간다.</p>
+
+      <p class="small-note"><strong>참고</strong> — "배차 잘못 나갔는데 취소 말고 바로 바꿀 순 없나요?" 질문이 나오면, 이미 배차된 배달은 배달 상세의 <strong>배차변경</strong>으로 다른 라이더에게 바로 바꿀 수 있다고 답하면 된다. 취소 후 재배차할 필요가 없다.</p>
+
+      <div class="admon warning">
+        <div class="ai">!</div>
+        <div><span class="at">Warning</span>
+          <p><strong>6건을 넘기지 마라.</strong> 7번째는 아무 반응 없이 무시되고 안내도 뜨지 않는다. 위 대본에서 "최대 여섯 건"을 먼저 말해두는 순서가 중요하다.</p>
+        </div>
+      </div>
+
+      <div class="transition"><span class="arrow">→</span><p>지금 보신 두 탭을 한 번 정리하고 넘어가겠습니다.</p></div>
+    </section>
+
+    <!-- SEGMENT 2 -->
+    <section class="segment" id="s2">
+      <div class="seg-head">
+        <div>
+          <h3 class="seg-title">지연은 두 종류입니다</h3>
+        </div>
+      </div>
+
+      <p class="state-tag"><span class="dot2"></span>조작하지 않는다 · <strong style="color:var(--ink-soft)">세 필터탭이 보이는 화면을 그대로 두고</strong> 청중을 보며 말한다</p>
+
+      <div class="script">
+        <p>방금 보신 두 탭을 정리하면 이렇습니다.</p>
+        <p><strong>배차지연</strong>은 주문은 들어왔는데 아직 배차가 안 되고 있는 상태입니다. 픽업 시간이 다가오는데 라이더가 안 붙었다는 뜻이니 여기서 할 일은 <strong>적합한 라이더를 찾아 배차를 넣어주는 일</strong>입니다.</p>
+        <p><strong>픽업지연</strong>은 배차는 끝났는데 라이더가 가게에 아직 도착하지 않은 상태입니다. 배차는 이미 됐으니 여기서 할 일은 배차가 아니라 <strong>라이더에게 확인하는 일</strong>입니다.</p>
+        <p><em class="pause">같은 "지연"이지만, 배차지연은 없는 라이더를 새로 채워야 하는 일이고 픽업지연은 이미 배정된 라이더를 확인해야 하는 일입니다.</em> 할 일 자체가 다르니 앱도 처음부터 탭을 나눠서 보여줍니다.</p>
+      </div>
+
+      <div class="compare">
+        <div class="compare-card a"><h4>배차지연</h4><p><strong>상태</strong> · 배차가 안 되고 있다<br><strong>할 일</strong> · 적합한 라이더에게 배차</p></div>
+        <div class="compare-card b"><h4>픽업지연</h4><p><strong>상태</strong> · 라이더가 가게에 못 갔다<br><strong>할 일</strong> · 라이더에게 전화해 확인</p></div>
+      </div>
+
+      <div class="transition"><span class="arrow">→</span><p>그런데 라이더에게 확인해야 할 때, 그 라이더가 지금 어디서 무엇을 하고 있는지도 같은 지도에서 볼 수 있습니다.</p></div>
+    </section>
+
+    <!-- SEGMENT 3 -->
+    <section class="segment" id="s3">
+      <div class="seg-head">
+        <div>
+          <h3 class="seg-title">지도관제 라이더 모드</h3>
+        </div>
+      </div>
+
+      <div class="beat">
+        <div class="beat-head"><span class="beat-num">1</span><p class="beat-action">우측 하단 모드 토글을 라이더로 전환</p></div>
+        <div class="script">
+          <p>같은 지도인데 관점만 바꿉니다. 방금까지는 주문 중심이었고, 지금부터는 사람 중심입니다.</p>
+        </div>
+      </div>
+
+      <div class="beat">
+        <div class="beat-head"><span class="beat-num">2</span><p class="beat-action">라이더 마커 하나를 확대해 색과 숫자 배지 보여주기</p></div>
+        <div class="script">
+          <p>마커 색이 라이더 상태입니다. <span class="route-dot route-blue"></span>운행 중이 파랑, <span class="route-dot route-green"></span>대기가 초록, <span class="route-dot route-purple"></span>휴식이 보라입니다. 마커에 붙은 숫자는 <strong>그 라이더가 지금 배차 몇 건, 픽업 몇 건을 들고 있는지</strong>입니다. 퇴근한 라이더는 지도에도 목록에도 나오지 않습니다. 라이더가 한 지점에 여러 명 겹쳐 있어도 <strong>운행 중인 라이더가 항상 맨 위에 보여서</strong> 놓치지 않습니다.</p>
+        </div>
+      </div>
+
+      <div class="beat">
+        <div class="beat-head"><span class="beat-num">3</span><p class="beat-action"><strong>대기</strong> 칩 탭 → <strong>자사</strong> 체크 → 정렬 <strong>운행건수 적은순</strong> (세 동작 연속으로)</p></div>
+        <div class="script">
+          <p>실제로 쓰실 상황으로 해보겠습니다. 지금 여력 있는 우리 라이더를 찾아야 한다고 하면, 대기 상태만 걸고, 자사 소속만 남기고, 운행 건수가 적은 순으로 정렬합니다. <strong>세 조건이 한꺼번에 걸리고 아래 목록과 지도 마커가 항상 같은 결과를 보여줍니다.</strong></p>
+        </div>
+      </div>
+
+      <div class="beat">
+        <div class="beat-head"><span class="beat-num">4</span><p class="beat-action">라이더 한 명 탭 → 수행 중 주문 목록과 헤더 전화 아이콘 짚기</p></div>
+        <div class="script">
+          <p>라이더를 누르면 그 사람이 지금 수행 중인 주문이 지도와 목록에 함께 뜹니다. 여기 전화 아이콘을 누르면 바로 통화로 넘어갑니다. <em class="pause">픽업이 늦는 라이더를 찾아서 확인하는 일이 이 화면 안에서 끝납니다.</em></p>
+        </div>
+      </div>
+
+      <div class="admon note">
+        <div class="ai">i</div>
+        <div><span class="at">Note</span>
+          <p><strong>배차취소를 보여줄 계획이라면 경로에 주의하라.</strong> 라이더 모드에서 수행 주문을 탭하면 주문 상세로 이동할 뿐이다. 배차취소는 상점 모드에서 라이더 마커를 탭했을 때 나오는 목록에서만 가능하다. 확인창 문구에 다듬을 표현이 남아 있어 확정까지 가지 않는 편이 안전하다.</p>
+        </div>
+      </div>
+
+      <div class="transition"><span class="arrow">→</span><p>여기까지가 지도에서 눈으로 찾는 방법이었습니다. 그런데 찾아야 할 게 눈에 안 보일 때도 있습니다.</p></div>
+    </section>
+
+    <!-- SEGMENT 4 -->
+    <section class="segment" id="s4">
+      <div class="seg-head">
+        <div>
+          <h3 class="seg-title">검색 — 왜 걸렸는지 말해주는</h3>
+        </div>
+      </div>
+
+      <div class="beat">
+        <div class="beat-head"><span class="beat-num">1-2</span><p class="beat-action">모드를 상점으로 되돌리고 상단 검색바 탭 → 상점명을 <strong>초성만</strong> 입력</p></div>
+        <div class="script">
+          <p>상점 이름을 다 치지 않아도 됩니다. 초성만으로 찾습니다.</p>
+        </div>
+      </div>
+
+      <div class="beat">
+        <div class="beat-head"><span class="beat-num">3</span><p class="beat-action">검색어 지우고 미리 준비한 <strong>픽업메모 키워드</strong> 입력</p></div>
+        <div class="script">
+          <p>지금 이 주문을 보시면, 방금 제가 입력한 글자가 화면 어디에도 안 보입니다. 그런데 검색에 걸렸습니다. 아래를 보시면 <strong>"픽업메모"라고 이유가 적혀 있습니다.</strong> 메모에 적힌 내용 때문에 걸린 겁니다.</p>
+        </div>
+      </div>
+
+      <div class="beat">
+        <div class="beat-head"><span class="beat-num">4</span><p class="beat-action">결과 항목 아래 <strong>근거 한 줄</strong>을 손가락으로 짚기</p></div>
+        <div class="script">
+          <p>상점명, 라이더명, 주소, 메모, 당일번호, 결제 방식까지 한 번에 찾고 <strong>걸린 이유를 매번 알려줍니다.</strong> <em class="pause">찾았는데 왜 나왔는지 모르겠는 상황이 없습니다.</em></p>
+        </div>
+      </div>
+
+      <p class="beat-note"><span class="beat-num">5</span><span>빠져나올 때는 <strong>결과를 탭해서</strong> 나온다 — 뒤로가기로 나오지 않는다</span></p>
+
+      <p class="small-note"><strong>질문이 나올 수 있는 지점</strong> — 당일번호는 부분일치라 "30"을 넣으면 130, 300도 함께 걸린다. 지적받으면 방어하지 말고 근거 줄을 짚어라: "당일번호 130"이라고 이유가 적혀 있어서 왜 걸렸는지 바로 확인된다고 답하면 된다.</p>
+
+      <div class="transition"><span class="arrow">→</span><p>여기까지가 지도관제 기능입니다. 그런데 아까 지연 기준을 5분이라고 말씀드렸는데, "우리 허브는 5분이 안 맞는데" 하실 수 있습니다. 그 얘기를 하겠습니다.</p></div>
+    </section>
+
+    <!-- SEGMENT 5 -->
+    <section class="segment" id="s5">
+      <div class="seg-head">
+        <div>
+          <h3 class="seg-title">지연 기준 — 기본값과 조정</h3>
+        </div>
+      </div>
+
+      <div class="beat">
+        <div class="beat-head"><span class="beat-num">1</span><p class="beat-action">지도 <strong>왼쪽 아래 맨 위 톱니바퀴</strong> 버튼으로 설정 진입</p></div>
+        <div class="script">
+          <p>지연 기준은 <strong>배차지연 기본 5분, 픽업지연 기본 유예 0분</strong>으로 정해져 있습니다. 허브마다 상권도 동선도 다르니 <strong>원하는 조건에 맞게 배차지연과 픽업지연을 각각 따로 조절해서 보실 수 있습니다.</strong></p>
+        </div>
+      </div>
+
+      <div class="beat">
+        <div class="beat-head"><span class="beat-num">2</span><p class="beat-action">배차지연 기준 슬라이더를 한 번 움직여 보이고 되돌리기</p></div>
+        <div class="script">
+          <p>슬라이더를 움직이면 그 자리에서 바로 적용됩니다. 저장 버튼을 따로 누르지 않으셔도 됩니다. 0분부터 15분까지 1분 단위로 맞추실 수 있습니다.</p>
+          <p>픽업지연은 조금 다릅니다. 픽업 예정시각을 <strong>몇 분 넘겨야 지연으로 볼지</strong> 유예 시간을 두는 방식입니다. 다만 조리가 끝났는데 라이더가 아직 안 가져간 주문은 유예와 관계없이 바로 지연으로 잡힙니다.</p>
+          <p>그리고 설정을 잘못 만졌을 때는 오른쪽 위 <strong>초기화</strong>를 누르면 전부 기본값으로 돌아갑니다.</p>
+        </div>
+      </div>
+
+      <p class="beat-note"><span class="beat-num">3</span><span>"전체" 탭 범위 항목만 짚어주고 뒤로 나오기 — 말없이, 손가락으로만</span></p>
+
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>설정</th><th>기본값</th><th>무엇이 달라지나</th></tr></thead>
+          <tbody>
+            <tr><td><strong>배차지연 기준</strong></td><td class="num-cell">5분</td><td>픽업 예정시각까지 이보다 적게 남은 미배차 주문을 지연으로 본다. 0~15분, 1분 단위</td></tr>
+            <tr><td><strong>픽업지연 유예</strong></td><td class="num-cell">0분</td><td>픽업 예정시각을 이만큼 넘겨야 지연으로 잡는다. 조리 완료된 미픽업 주문은 유예와 무관하게 바로 잡힌다</td></tr>
+            <tr><td><strong>"전체" 탭 범위</strong></td><td>지연주문만</td><td>모든주문으로 바꾸면 배달 중인 주문까지 보이고, <strong>상점 목록에도 지연 없는 상점이 함께 나온다</strong></td></tr>
+            <tr><td><strong>지도 테마</strong></td><td>자동</td><td>기기 설정을 따른다. 밝게·어둡게 고정도 된다</td></tr>
+            <tr><td><strong>버튼 노출</strong></td><td>모두 켬</td><td>전체보기·나침반·내 위치 버튼을 각각 숨긴다. 설정 버튼 자체는 숨겨지지 않는다</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="delay-timeline">
+        <p class="dt-caption">픽업 예정시각을 기준으로 본 두 지연의 위치</p>
+        <div class="dt-track">
+          <div class="dt-fill dt-fill-a" style="left:33%; width:17%;"></div>
+          <div class="dt-fill dt-fill-b" style="left:50%; width:50%;"></div>
+          <span class="dt-tick" style="left:33%;"></span>
+          <span class="dt-tick-label" style="left:33%;">배차지연 기준<br>(기본 5분 전)</span>
+          <span class="dt-center"></span>
+          <span class="dt-center-label">픽업 예정시각</span>
+        </div>
+        <div class="dt-zones">
+          <div class="dt-zone a"><strong>왼쪽 — 배차지연 영역</strong><span>예정시각이 다가오는데 아직 라이더가 없다면, 지금 적합한 라이더를 찾아 배차해야 한다</span></div>
+          <div class="dt-zone b"><strong>오른쪽(초과) — 픽업지연 영역</strong><span>예정시각을 넘겼는데 라이더가 아직 픽업 전이라면, 라이더에게 확인해야 한다</span></div>
+        </div>
+        <p class="dt-note">* 배차지연 기준(기본 5분)과 픽업지연 유예(기본 0분)는 설정에서 각각 늘리거나 줄일 수 있다 — 위 표 참고. 조리 완료 후 미픽업은 유예와 무관하게 이 선을 넘는 즉시 픽업지연으로 잡힌다.</p>
+      </div>
+
+      <div class="transition"><span class="arrow">→</span><p>여기까지가 지도관제였습니다. 이제 남은 화면 하나, 목록관제를 보여드리겠습니다.</p></div>
+    </section>
+
+    <!-- SEGMENT 6 -->
+    <section class="segment" id="s6">
+      <div class="seg-head">
+        <div>
+          <h3 class="seg-title">두 화면은 역할이 다릅니다</h3>
+        </div>
+      </div>
+
+      <p class="state-tag"><span class="dot2"></span>아직 목록관제 탭을 누르지 않는다 · 지도 화면을 그대로 두고 먼저 말한다</p>
+
+      <div class="script">
+        <p>목록관제는 지도를 대신하는 화면이 아닙니다. 보시는 분의 성향에 따라 편한 화면이 다릅니다.</p>
+        <p><strong>지도관제는 허브 전체를 한눈에 조망하고 싶은 분을 위한 화면입니다.</strong> 어느 지역에 주문이 몰렸는지, 라이더가 어디 있는지를 공간으로 봅니다.</p>
+        <p><strong>목록관제는 우리 허브 지형지물에 이미 익숙하셔서 텍스트와 정렬 위주로 빠르게 훑고 싶은 분을 위한 화면입니다.</strong> 지도로 위치를 보지 않아도 목록만으로 판단이 되시는 분들이 편해하십니다.</p>
+        <p><em class="pause">둘 중 하나가 더 나은 게 아니라 보시는 분 성향에 맞게 고르시면 됩니다.</em></p>
+        <p>목록관제는 화면 구조만 짧게 훑겠습니다. 탭 이름과 정렬 기준이 직관적이라 오늘 안 보여드리는 부분도 직접 눌러보시면 바로 익히실 수 있을 겁니다.</p>
+      </div>
+
+      <div class="compare">
+        <div class="compare-card b"><h4>지도관제</h4><p>허브 전체를 조망하고 싶은 분<br>공간·밀집도로 파악</p></div>
+        <div class="compare-card a"><h4>목록관제</h4><p>지형지물에 이미 익숙한 분<br>텍스트·정렬로 빠르게 파악</p></div>
+      </div>
+
+      <div class="transition"><span class="arrow">→</span><p>실제 화면으로, 짧게 보시겠습니다.</p></div>
+    </section>
+
+    <!-- SEGMENT 7 -->
+    <section class="segment" id="s7">
+      <div class="seg-head">
+        <div>
+          <h3 class="seg-title">목록관제 — 접수 · 배차 · 예정</h3>
+        </div>
+      </div>
+
+      <div class="beat">
+        <div class="beat-head"><span class="beat-num">1</span><p class="beat-action">하단 <strong>목록관제</strong> 탭 이동 → 세 탭 차례로 스와이프, 탭 옆 숫자 짚기</p></div>
+        <div class="script">
+          <p>세 개 탭이 있습니다. 접수는 아직 배차 안 된 주문, 배차는 라이더가 잡아서 움직이는 주문, 예정은 아직 노출 전인 예약 주문입니다. 탭 옆 숫자는 지금 화면에 보이는 건수 그대로입니다.</p>
+        </div>
+      </div>
+
+      <div class="beat">
+        <div class="beat-head"><span class="beat-num">2</span><p class="beat-action">접수 탭에서 정렬을 <strong>높은 배달대행료순</strong>으로 변경</p></div>
+        <div class="script">
+          <p>접수 탭은 오래 기다린 주문이 위로 오는 게 기본인데 <strong>대행료 높은 순이나 우리 허브 주문 먼저 같은 기준으로 바꿔 보실 수 있습니다.</strong> 한번 바꿔두면 앱을 껐다 켜도 그대로 유지됩니다.</p>
+        </div>
+      </div>
+
+      <div class="beat">
+        <div class="beat-head"><span class="beat-num">3</span><p class="beat-action">배차 탭 → 목록 위아래 그룹 훑기</p></div>
+        <div class="script">
+          <p>배차 탭은 정렬을 고르실 필요가 없습니다. <strong>아직 픽업 전인 주문이 항상 위, 픽업을 마치고 배달 중인 주문이 항상 아래로 자동으로 갈립니다.</strong> 라이더가 픽업을 찍으면 그 주문이 아래 그룹으로 내려갑니다.</p>
+        </div>
+        <p class="beat-note" style="margin-top:10px;"><span class="beat-num" style="border-radius:50%;">!</span><span><strong>배차 탭 필터는 열지 않는다</strong> — 모두 해제하면 라벨과 목록이 어긋난다</span></p>
+      </div>
+
+      <div class="beat">
+        <div class="beat-head"><span class="beat-num">4</span><p class="beat-action">예정 탭 → "N분 후 노출" 카운트다운 짚기</p></div>
+        <div class="script">
+          <p>예정 탭은 곧 노출될 주문이 위로 올라옵니다. 예약시각 옆에 <strong>몇 분 뒤에 접수 목록에 뜨는지 카운트다운이 돌아갑니다.</strong> 미리 라이더를 확보해 두실 수 있습니다.</p>
+        </div>
+      </div>
+
+      <div class="beat">
+        <div class="beat-head"><span class="beat-num">5</span><p class="beat-action">가능하면 신규 주문이 들어오는 타이밍에 알림음·음성 들려주기</p></div>
+        <div class="script">
+          <p>그리고 접수와 배차 탭은 새 주문이 들어오면 소리와 음성으로 알려줍니다. 목록을 계속 보고 계시지 않아도 됩니다. 음성 속도나 알림음, 글자 크기와 배경색은 설정에서 각자 맞추실 수 있습니다.</p>
+        </div>
+      </div>
+
+      <p class="small-note"><strong>예정 탭에 정렬·필터가 없는 이유를 물으면</strong> — 1차 범위라 의도적으로 뺐고 다음 단계에서 확장한다고 답하면 정확하다. 묻지 않으면 굳이 언급하지 않는다.</p>
+
+      <div class="transition"><span class="arrow">→</span><p>기능은 여기까지입니다. 마지막으로 가장 많이 물어보시는 것, 계정과 권한 이야기를 하고 마치겠습니다.</p></div>
+    </section>
+
+    <!-- SEGMENT 8 -->
+    <section class="segment" id="s8">
+      <div class="seg-head">
+        <div>
+          <h3 class="seg-title">닫는 말 — 계정·권한과 정리</h3>
+        </div>
+      </div>
+
+      <p class="state-tag"><span class="dot2"></span>폰은 내려놓고 청중을 본다 · 화면은 지도관제로 되돌려 두면 보기 좋다</p>
+
+      <div class="script">
+        <p>새 앱이라고 해서 계정을 새로 만들거나 권한을 다시 신청하실 필요가 없습니다. <strong>지금 쓰고 계신 그 계정, 그 권한으로 그대로 로그인하시면 됩니다.</strong> 모바일 전용 권한을 따로 만든 게 아니라 <strong>관리자CS·허브컨트롤룸 데스크탑과 완전히 같은 권한 체계</strong>를 그대로 가져다 썼습니다. 그래서 지금 못 보시는 메뉴는 앱에서도 똑같이 안 보이고 데스크탑에서 권한을 바꾸시면 앱에도 그 즉시 반영됩니다.</p>
+        <p>시작하시는 방법은 세 단계입니다. 스토어에서 앱을 내려받고, 지금 쓰시는 계정으로 로그인하고, 알림과 위치 권한을 허용하시면 바로 지도관제 화면이 열립니다.</p>
+        <p>처음에 말씀드린 세 가지로 마치겠습니다. 첫째, <strong>주문을 발견한 자리에서 배차가 끝납니다.</strong> 둘째, <strong>배차지연과 픽업지연은 해야 할 일이 다르니 나눠서 봅니다.</strong> 지연 기준은 허브가 직접 정하실 수 있습니다. 셋째, <strong>계정과 권한은 지금 그대로입니다.</strong></p>
+        <p>오늘은 시간이 짧아 지도관제 위주로 압축해서 보여드렸습니다. 목록관제를 포함한 나머지 기능들은 메뉴 이름과 화면 제목이 직관적이니 직접 써보시면 자연스럽게 익히실 수 있을 겁니다.</p>
+        <p><em class="pause">궁금한 점 말씀해 주세요.</em></p>
+      </div>
+
+      <p class="small-note"><strong>준비해 둘 답</strong> — 보이는 주문의 범위는 <strong>마이페이지에서 선택한 관제 허브</strong>를 따른다. "왜 저 허브 주문은 안 보이죠?" 질문의 답이 여기 있다.</p>
+    </section>
+
+    <h2 class="section-title"><span class="num">§</span>시간이 밀릴 때 줄이는 순서</h2>
+    <p style="color:var(--ink-soft); font-size:14.5px; margin-top:-8px;">직접 조작하는 시연은 항상 예상보다 길어진다. 밀렸을 때 아래 순서로 줄이면 세 문장은 지켜진다.</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>순서</th><th>줄일 구간</th><th>줄이는 방법</th></tr></thead>
+        <tbody>
+          <tr><td class="num-cell"><strong>1순위</strong></td><td>목록관제</td><td>예정 탭과 알림음을 빼고 세 탭 소개 + 배차 탭 자동 분리만 짧게</td></tr>
+          <tr><td class="num-cell"><strong>2순위</strong></td><td>지연 기준 설정</td><td>설정에 들어가지 않고 "기준은 직접 조절하실 수 있습니다" 한 문장으로</td></tr>
+          <tr><td class="num-cell"><strong>3순위</strong></td><td>라이더 모드</td><td>필터 3조건 시연을 빼고 마커 색·숫자 설명까지만</td></tr>
+          <tr><td class="num-cell" style="color:var(--danger); font-weight:700;">고정</td><td><strong>상점 모드 · 지연 정리 · 검색</strong></td><td>세 문장이 여기서 나온다. 이 구간을 줄이면 시연의 이유가 사라진다</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="section-title"><span class="num">§</span>시연 중 걸릴 수 있는 동작</h2>
+    <p style="color:var(--ink-soft); font-size:14.5px; margin-top:-8px;">대부분 버그가 아니라 의도된 제약이거나 알려진 제약이다. 미리 알고 말하면 넘어가지만, 모르고 만나면 시연이 멈춘다.</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>상황</th><th>실제 동작</th><th>대응</th></tr></thead>
+        <tbody>
+          <tr><td>7번째 주문 선택</td><td>아무 반응 없이 무시된다. 안내 문구가 뜨지 않는다</td><td>다중선택 대본에서 <strong>"최대 여섯 건"</strong>을 먼저 말하고 6건만 시연</td></tr>
+          <tr><td>"우리 상점이 왜 안 보이죠?"</td><td>상점 목록에는 지연이 있는 상점만 올라온다. 지연 0건 상점은 나오지 않는다</td><td>기능이 빠진 게 아니라 <strong>지연된 곳만 보여주는 화면</strong>이라고 답한다. 설정에서 "전체" 범위를 모든주문으로 바꾸면 전부 나온다</td></tr>
+          <tr><td>상점⇄라이더 모드 전환</td><td>선택했던 상점·필터·검색어가 전부 초기화된다</td><td>상점 모드를 완전히 끝낸 뒤 토글한다. 되돌아올 계획을 세우지 않는다</td></tr>
+          <tr><td>주문 30건 넘는 상점 선택</td><td>지도에는 30건까지만 그려진다. 하단 목록에는 전건이 나온다</td><td>"지도는 성능을 위해 30건까지 그리고, 목록에는 전부 있습니다"로 설명</td></tr>
+          <tr><td>배차 탭 첫 진입</td><td>로딩 표시 없이 "진행중인 배달이 없어요"가 잠깐 보였다가 목록으로 바뀐다</td><td>당황하지 말고 기다린다. 시연 직전에 이 탭을 한 번 열어두면 나타나지 않는다</td></tr>
+          <tr><td>배차 탭 필터를 모두 해제</td><td>버튼 라벨은 "전체"인데 목록은 비어 있다</td><td>배차 탭 필터를 열지 않는 것이 가장 안전하다</td></tr>
+          <tr><td>정렬·필터 아이콘 색</td><td>기본값이어도 항상 활성 색으로 보인다</td><td>"필터 걸려 있나요?" 질문에는 아이콘 색이 아니라 라벨 텍스트로 답한다</td></tr>
+          <tr><td>검색 결과에서 뒤로가기</td><td>검색어가 남아 지도에 인라인 결과가 뜨고, 이 목록은 전체화면 검색보다 범위가 넓다</td><td>검색은 <strong>결과를 탭해서</strong> 빠져나온다</td></tr>
+          <tr><td>배차취소 확인창</td><td>제목 문구에 다듬어야 할 표현이 남아 있다</td><td>확인창을 띄우지 않거나, 띄우더라도 제목을 읽지 않고 넘어간다</td></tr>
+          <tr><td>네트워크가 끊기는 경우</td><td>접수·예정 탭은 오류 없이 목록만 조용히 비워진다. 장애가 "주문 없음"처럼 보인다</td><td><strong>공용 와이파이를 쓰지 않는다.</strong> 유선 미러링 또는 전용 핫스팟으로 진행</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="section-title"><span class="num">§</span>전날까지 준비할 데이터</h2>
+    <p style="color:var(--ink-soft); font-size:14.5px; margin-top:-8px;">이 시연은 실데이터가 있어야 성립한다. 아래 조건이 갖춰지지 않으면 해당 장면을 건너뛰어야 한다.</p>
+    <ul class="checklist">
+      <li><span class="box"></span><p><strong>지연 주문이 여러 건 몰린 상점 2~3곳</strong> — 상점목록이 지연순으로 정렬된다는 것을 보여주려면 1위와 하위의 차이가 눈에 보여야 한다</p></li>
+      <li><span class="box"></span><p><strong>같은 상점의 접수 주문 6건 이상</strong> — 다중선택 일괄배차 장면에 필요</p></li>
+      <li><span class="box"></span><p><strong>배차지연·픽업지연 주문이 각각 1건 이상</strong> — 필터탭 세 개가 모두 결과를 가져야 두 지연의 차이를 설명할 수 있다</p></li>
+      <li><span class="box"></span><p><strong>운행·대기·휴식 라이더가 섞인 상태</strong> — 마커 세 가지 색을 한 화면에서 보여준다</p></li>
+      <li><span class="box"></span><p><strong>자사·타사 라이더가 섞인 상태</strong> — "자사" 체크박스를 켰을 때 목록이 실제로 줄어야 한다</p></li>
+      <li><span class="box"></span><p><strong>픽업메모에 검색용 특징 문자열이 든 주문 1건</strong> — 검색 근거 표시 장면의 핵심 소품. 화면에 그 글자가 보이지 않는 주문이어야 한다</p></li>
+      <li><span class="box"></span><p><strong>노출 시각이 아직 남은 예약 주문 1건</strong> — 카운트다운이 실제로 돌아야 한다</p></li>
+      <li><span class="box"></span><p><strong>지도 설정을 기본값으로 되돌려 둘 것</strong> — 배차지연 5분 기준에서 시작해야 "기본값을 바꿀 수 있다"는 설명이 성립한다</p></li>
+      <li><span class="box"></span><p><strong>배차 탭을 미리 한 번 열어둘 것</strong> — 첫 진입 시 빈 화면이 잠깐 보이는 현상을 피할 수 있다</p></li>
+    </ul>
+
+    <h2 class="section-title"><span class="num">§</span>출시 공지 초안과 다른 부분</h2>
+    <p style="color:var(--ink-soft); font-size:14.5px; margin-top:-8px;">실제 구현을 확인하는 과정에서, 참고한 출시 공지 초안과 앱의 현재 동작이 어긋나는 곳을 찾았다. 시연 자리에서 초안을 함께 배포할 계획이라면 먼저 반영해야 한다.</p>
+    <div class="diff-item"><span class="num">1</span><strong>최근 검색어 저장 기능은 없다.</strong><p>초안에는 <s>"최근 검색어는 최대 10개까지 저장됩니다"</s>라고 적혀 있으나 이 기능은 앱에서 빠졌다. 지금 검색 화면에는 입력하는 대로 걸러지는 결과 목록만 나온다.</p></div>
+    <div class="diff-item"><span class="num">2</span><strong>설정 버튼은 지도 왼쪽 아래에 있다.</strong><p>초안의 <s>"지도 우측 하단 설정 진입점"</s>과 위치가 다르다. 또한 픽업지연 항목은 판정 기준이 아니라 <strong>유예 시간</strong>을 분 단위로 두는 방식이다.</p></div>
+
+    <h2 class="section-title" id="ref"><span class="num">§</span>기존 앱에서 무엇이 어디로 갔나</h2>
+    <p style="color:var(--ink-soft); font-size:14.5px; margin-top:-8px;">시연에서 가장 많이 나올 질문은 새 기능이 아니라 <strong>"그거 어디 갔어요?"</strong> 다. 기존 바로고 관리자 앱을 쓰던 분들이라 화면 이름으로 물어본다. 아래 표를 눈에 익혀 두고, 질문이 나오면 표의 오른쪽을 그대로 답하면 된다.</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>기존 관리자 앱</th><th></th><th>새 앱에서는</th></tr></thead>
+        <tbody>
+          <tr><td><strong>오더</strong> 탭</td><td class="arrow-cell">→</td><td>목록관제 → 접수 탭</td></tr>
+          <tr><td><strong>배차</strong> 탭</td><td class="arrow-cell">→</td><td>목록관제 → 배차 탭</td></tr>
+          <tr><td><strong>완료</strong> 탭</td><td class="arrow-cell">→</td><td>마이페이지 → 배달내역 (기간을 정해 지난 내역까지 조회)</td></tr>
+          <tr><td>관제 탭 → <strong>라이더 관제</strong>(지도)</td><td class="arrow-cell">→</td><td>지도관제 → 라이더 모드</td></tr>
+          <tr><td>접수 상세 → <strong>기사배차</strong> 화면</td><td class="arrow-cell">→</td><td>지도관제에서 주문을 탭하면 라이더 선택이 <strong>그 자리에</strong> 열림 (화면 이동 없음)</td></tr>
+          <tr><td>주문 상세의 <strong>지도 보기</strong></td><td class="arrow-cell">→</td><td>지도관제 상점 모드에서 이미 지도 위에 있음 (따로 열 필요 없음)</td></tr>
+          <tr><td>관제 탭 → 상점 관리</td><td class="arrow-cell">→</td><td>마이페이지 → 상점 관리</td></tr>
+          <tr><td>관제 탭 → 라이더 관리</td><td class="arrow-cell">→</td><td>마이페이지 → 라이더 관리</td></tr>
+          <tr><td><strong>공지</strong> 탭</td><td class="arrow-cell">→</td><td>마이페이지 → 공지사항</td></tr>
+          <tr><td><strong>기타</strong> 탭</td><td class="arrow-cell">→</td><td>마이페이지</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="color:var(--ink-soft); font-size:14.5px;">정리하면 <strong style="color:var(--ink)">탭 6개가 3개로</strong> 줄었다. 없어진 게 아니라 성격에 따라 세 곳으로 모였다 — 실시간으로 봐야 하는 것은 지도관제와 목록관제로, 설정하고 관리하는 것은 마이페이지로.</p>
+
+    <div class="admon note">
+      <div class="ai">i</div>
+      <div><span class="at">Note</span>
+        <p><strong>기존 앱에서 라이더 관제 지도가 네이버용·카카오용으로 나뉘어 있던 것</strong>도 새 앱에서는 하나로 합쳐졌다. 지도를 고르실 필요가 없다. 이 점을 물어보는 분이 있으면 "지도는 하나로 통일했다"고 답하면 된다.</p>
+      </div>
+    </div>
+    <div class="admon tip">
+      <div class="ai">✓</div>
+      <div><span class="at">Tip</span>
+        <p><strong>"이 기능은 없나요?" 질문에는 솔직하게 답하라.</strong> 기능을 거의 다 옮겨 왔지만 빠진 것이 있을 수 있다. 없는 기능을 있다고 하거나 얼버무리지 말고, <strong>"지금은 없습니다. 어떤 상황에서 필요하신지 알려주시면 반영 검토하겠습니다"</strong>로 받는다. 여는 말에서 이미 "빠진 게 있을 수 있다"고 말해두었으니 말이 어긋나지 않는다.</p>
+      </div>
+    </div>
+    <div class="admon warning">
+      <div class="ai">!</div>
+      <div><span class="at">Warning</span>
+        <p><strong>완료 탭을 찾는 질문에 주의하라.</strong> 기존 완료 탭은 당일 근무조 기준으로만 보여줬지만 새 앱의 배달내역은 기간·상태·결제방법으로 걸러 지난 내역까지 조회할 수 있다. "없어졌다"가 아니라 <strong>"옮기면서 넓어졌다"</strong>로 답하는 것이 정확하다.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title"><span class="num">§</span>관련 문서</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>문서</th><th>용도</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">feature_docs/qa/orders/map_tab.md</td><td>지도관제 화면의 버튼·조건·정책값 상세 (QA 테스트케이스 설계용)</td></tr>
+          <tr><td class="mono">feature_docs/qa/orders/list_tab.md</td><td>목록관제 접수·배차·예정 탭 상세</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="color:var(--ink-faint); font-size:13px;">기능이 바뀌면 "시연 중 걸릴 수 있는 동작" 표부터 다시 확인할 것.</p>
+
+    <div class="appendix-banner" id="apA">
+      <span class="ap-eyebrow">부록 · 발표자 필수 이해</span>
+      <h2>여기부터는 대본이 아니다</h2>
+      <p>질문이 들어왔을 때 즉답하려면 발표자가 정확히 알고 있어야 하는 개념 두 가지다. 시연 전에 이 두 절만은 읽어 두는 것이 좋다.</p>
+    </div>
+
+    <div class="concept-card">
+      <h3>A. 지연이란 무엇인가</h3>
+      <p class="sub">지도관제에서 말하는 "지연"은 두 가지뿐이고, 둘은 <strong>아직 배차 전인지 / 배차는 됐는지</strong>로 갈린다.</p>
+
+      <p class="subhead" style="margin-top:24px;">A-1. 배차지연 — "곧 픽업해야 하는데 라이더가 없다"</p>
+      <div class="tbl-wrap">
+        <table>
+          <tbody>
+            <tr><td style="width:160px;"><strong>대상</strong></td><td><strong>아직 라이더가 배차되지 않은</strong> 접수 주문</td></tr>
+            <tr><td><strong>판정</strong></td><td><strong>픽업 예정시각까지 남은 시간</strong>이 설정값(기본 5분) 이하일 때</td></tr>
+            <tr><td><strong>예정시각이 없는 주문</strong></td><td>판정 대상에서 <strong>제외</strong> (지연으로 잡히지 않음)</td></tr>
+            <tr><td><strong>해야 할 일</strong></td><td>적합한 라이더를 찾아 배차를 넣어주는 일</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="admon warning">
+        <div class="ai">!</div>
+        <div><span class="at">Warning</span>
+          <p><strong>가장 흔한 오해: "오래 기다린 주문"이 배차지연이 아니다.</strong><br>기준은 접수 후 흐른 시간이 아니라 <strong>픽업 예정시각까지 남은 시간</strong>이다.</p>
+          <p>· 한 시간 전에 접수됐지만 픽업 예정이 두 시간 뒤인 주문 → <strong>배차지연 아님</strong> (아직 여유가 있다)<br>· 방금 접수됐는데 픽업 예정이 3분 뒤인 주문 → <strong>즉시 배차지연</strong> (당장 적합한 라이더를 찾아야 한다)</p>
+          <p>목록관제 접수 탭에서 보시는 <strong>경과시간</strong>(접수 후 흐른 시간)과는 다른 개념이다. 이 둘을 섞어 설명하면 청중이 혼란스러워한다.</p>
+        </div>
+      </div>
+
+      <p class="subhead" style="margin-top:24px;">A-2. 픽업지연 — "배차는 됐는데 가게에서 아직 안 가져갔다"</p>
+      <p style="font-size:14.5px; color:var(--ink-soft);">배차가 끝나 라이더가 정해졌지만 <strong>아직 픽업 전인</strong> 주문이 대상이다. 다음 <strong>둘 중 하나만</strong> 해당해도 픽업지연으로 잡힌다.</p>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th style="width:120px;">경로</th><th>내용</th></tr></thead>
+          <tbody>
+            <tr><td><strong>① 시각 초과</strong></td><td>픽업 예정시각을 <strong>유예 시간만큼 지났을 때</strong> (기본 유예 0분이므로 예정시각을 넘기면 즉시)</td></tr>
+            <tr><td><strong>② 조리 완료 후 미픽업</strong></td><td>상점이 <strong>상품 준비 완료</strong>를 눌렀는데 라이더가 아직 안 가져갔을 때 — <strong>유예 시간과 무관하게 즉시</strong> 잡힌다</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:14.5px; color:var(--ink-soft);">②가 유예를 무시한다는 점이 중요하다. 음식이 이미 완성돼 식고 있는 상황이라 예정시각과 별개로 급하기 때문이다.</p>
+      <p style="font-size:14.5px; color:var(--ink-soft);"><strong style="color:var(--ink)">해야 할 일</strong>: 배차는 이미 됐으니 배차가 아니라 <strong>라이더에게 확인</strong>하는 일이다.</p>
+
+      <p class="subhead" style="margin-top:24px;">A-3. 두 지연의 관계</p>
+      <ul class="checklist" style="margin-top:8px;">
+        <li><span class="box"></span><p><strong>"전체" 탭</strong> = 배차지연 + 픽업지연을 합친 것(기본 설정 기준). 그래서 기본 설정에서는 <span class="mono">전체 건수 = 배차지연 건수 + 픽업지연 건수</span>가 성립한다.</p></li>
+        <li><span class="box"></span><p><strong>상점 목록</strong>에 올라오는 상점, 그리고 <strong>상점 마커의 지연 표시</strong>도 이 두 지연을 합친 건수를 따른다. 두 지연이 모두 0건인 상점은 기본 설정에서 목록에 아예 나오지 않는다.</p></li>
+      </ul>
+    </div>
+
+    <div class="concept-card" id="apB">
+      <h3>B. 설정에서 게이지를 움직이면 무엇이 달라지나</h3>
+      <p class="sub">설정 화면의 슬라이더 두 개는 <strong>"무엇을 지연이라고 부를지"</strong>를 정하는 것이다. 주문 데이터가 바뀌는 게 아니라, 같은 주문을 지연으로 볼지 말지의 선이 움직인다.</p>
+
+      <p class="subhead" style="margin-top:24px;">B-1. 두 슬라이더는 방향이 서로 반대다</p>
+      <p style="font-size:14.5px; color:var(--ink-soft);">이게 가장 혼동하기 쉬운 지점이다. <strong>둘 다 올리는데 결과는 반대로 간다.</strong></p>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>슬라이더를 <strong>올리면</strong></th><th>배차지연 기준</th><th>픽업지연 유예</th></tr></thead>
+          <tbody>
+            <tr><td>지연으로 잡히는 시점</td><td><strong>더 일찍</strong> 잡힌다</td><td><strong>더 늦게</strong> 잡힌다</td></tr>
+            <tr><td>목록에 뜨는 건수</td><td><strong>늘어난다</strong></td><td><strong>줄어든다</strong></td></tr>
+            <tr><td>관제 성격</td><td>더 <strong>민감</strong>하게</td><td>더 <strong>관대</strong>하게</td></tr>
+            <tr><td>한마디로</td><td>"몇 분 전부터 챙길까"</td><td>"얼마나 봐줄까"</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:14.5px; color:var(--ink-soft);">단어가 다른 이유가 여기 있다. 배차지연은 <strong>기준</strong>(이 선 안에 들어오면 지연), 픽업지연은 <strong>유예</strong>(이만큼은 봐준다)다.</p>
+
+      <p class="subhead" style="margin-top:24px;">B-2. 예시 — 픽업 예정 19:00 주문 하나</p>
+      <p style="font-size:14px; color:var(--ink); font-weight:700; margin-bottom:6px;">아직 라이더가 없다면 (배차지연)</p>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>배차지연 기준</th><th>언제부터 지연 목록에 뜨는가</th></tr></thead>
+          <tbody>
+            <tr><td class="num-cell">0분</td><td>19:00을 넘겨야 뜬다 — 이미 늦은 것만 잡는다</td></tr>
+            <tr><td class="num-cell">5분 (기본)</td><td><strong>18:55</strong>부터 뜬다</td></tr>
+            <tr><td class="num-cell">15분</td><td><strong>18:45</strong>부터 뜬다 — 가장 일찍 챙긴다</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:14px; color:var(--ink); font-weight:700; margin:16px 0 6px;">라이더는 배차됐지만 아직 픽업 안 했다면 (픽업지연)</p>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>픽업지연 유예</th><th>언제부터 지연 목록에 뜨는가</th></tr></thead>
+          <tbody>
+            <tr><td class="num-cell">0분 (기본)</td><td><strong>19:00</strong>을 넘기면 바로 뜬다</td></tr>
+            <tr><td class="num-cell">10분</td><td><strong>19:10</strong>까지는 안 뜬다</td></tr>
+            <tr><td class="num-cell">15분</td><td><strong>19:15</strong>까지는 안 뜬다 — 가장 관대하다</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:14.5px; color:var(--ink-soft);">단, 어느 유예를 걸어두었든 <strong>상점이 조리 완료를 누르면 그 즉시</strong> 픽업지연으로 뜬다.</p>
+
+      <p class="subhead" style="margin-top:24px;">B-3. 그래서 우리 허브는 어떻게 맞춰야 하나</p>
+      <p style="font-size:14.5px; color:var(--ink-soft);">질문이 들어오면 아래로 답하면 된다. 정답은 없고 <strong>허브 상황에 맞추는 값</strong>이다.</p>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>지금 겪는 문제</th><th>이렇게 조정</th></tr></thead>
+          <tbody>
+            <tr><td>배차가 자꾸 늦어 아슬아슬하다</td><td><strong>배차지연 기준을 올린다</strong> — 더 미리 경고를 받아 여유 있게 배차</td></tr>
+            <tr><td>지연 목록이 너무 많아 다 볼 수 없다</td><td><strong>배차지연 기준을 내린다</strong> — 정말 급한 것만 남는다</td></tr>
+            <tr><td>픽업지연이 너무 많이 떠서 의미가 없다</td><td><strong>픽업지연 유예를 올린다</strong> — 상권 특성상 조금 늦는 게 정상이라면</td></tr>
+            <tr><td>라이더가 가게에서 지체하는 걸 빨리 잡고 싶다</td><td><strong>픽업지연 유예를 0분으로 둔다</strong> — 예정시각만 넘겨도 바로 보인다</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="admon tip">
+        <div class="ai">✓</div>
+        <div><span class="at">Tip</span>
+          <p><strong>조정 결과는 지도와 목록 양쪽에 바로 반영된다.</strong> 슬라이더를 움직이면 저장 버튼을 누르지 않아도 그 자리에서 적용되고 지연 건수·상점 목록·상점 마커의 지연 표시가 함께 바뀐다. 시연 중에 값을 바꿔 보이면 목록이 실시간으로 늘거나 줄어드는 것이 보이니 설명보다 이게 빠르다.</p>
+        </div>
+      </div>
+      <div class="admon note">
+        <div class="ai">i</div>
+        <div><span class="at">Note</span>
+          <p><strong>설정은 이 기기에만 적용된다.</strong> 계정별로 따라다니지 않고 기기 단위로 저장되므로 다른 분이 자기 폰에서 다르게 맞춰 쓰셔도 서로 영향이 없다. "제가 바꾸면 다른 사람 화면도 바뀌나요?"라는 질문의 답이 이것이다.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="footer-note">HCR MOBILE · 지도관제 · 목록관제 시연 대본 · 2026-09-02</p>
+
+  </main>
+</div>
+
+<script>
+(function(){
+  var items = Array.prototype.slice.call(document.querySelectorAll('.rail-item'));
+  var targets = items.map(function(it){
+    return document.getElementById(it.getAttribute('data-target'));
+  });
+  function onScroll(){
+    var y = window.scrollY + 120;
+    var activeIdx = 0;
+    for (var i=0;i<targets.length;i++){
+      if (targets[i] && targets[i].offsetTop <= y) activeIdx = i;
+    }
+    items.forEach(function(it,i){ it.classList.toggle('active', i===activeIdx); });
+  }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+})();
+</script>
