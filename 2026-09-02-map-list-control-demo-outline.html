@@ -459,13 +459,79 @@ hr{ border:none; border-top:1px solid var(--border); margin:40px 0; }
     </figure>
 
     <p class="fig-label">게이지를 옮기면 무슨 일이 생기나</p>
-    <ul class="tree">
-      <li><strong>배차지연 게이지</strong> — "픽업 예정시각 <em>몇 분 전</em>부터, 라이더 없는 주문을 지연으로 볼까"
-        <ul>
-          <li>예) 픽업 예정 12:30 주문 → 기본 5분이면 12:25부터, 10분으로 올리면 12:20부터 배차지연 탭에 올라옴</li>
-          <li>올릴수록 <em>더 일찍, 더 많이</em> 잡힘 — 미리 챙기고 싶으면 올리고, 급한 것만 보고 싶으면 내림</li>
-          <li>0분으로 내리면 예정시각을 넘겨야 잡힘</li>
-        </ul>
+    <figure class="fig">
+      <svg role="img" aria-label="지도 설정의 두 슬라이더를 흉내 낸 와이어프레임. 왼쪽 배차지연 기준은 기본 5분이고 픽업 예정 12:30 주문이면 12:25부터 배차지연 탭에 올라오며, 10분으로 올리면 12:20부터 더 일찍 더 많이, 0분으로 내리면 12:30 무렵부터 잡힌다. 라이더 없이 예정시각을 넘겨도 계속 배차지연이다. 오른쪽 픽업지연 유예시간은 기본 0분이고 12:30을 넘는 순간 픽업지연 탭에 올라오며, 5분으로 올리면 12:35부터 더 늦게 더 적게 잡힌다. 상점이 조리 완료를 누르면 유예를 무시하고 바로 올라온다. 게이지는 주문을 바꾸지 않고 지연 탭에 올라오는 시점만 바꾼다." viewBox="0 0 760 312">
+        <defs>
+          <marker id="gArr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="currentColor"/>
+          </marker>
+        </defs>
+
+        <!-- ===== 왼쪽 패널: 배차지연 기준 ===== -->
+        <rect x="12" y="12" width="356" height="258" rx="10" fill="none" stroke="var(--border)"/>
+        <text x="30" y="38" font-size="13" font-weight="700" fill="var(--orange)">배차지연 기준</text>
+        <text x="350" y="38" font-size="13" font-weight="700" text-anchor="end" fill="currentColor">5분</text>
+        <text x="30" y="56" font-size="11" fill="currentColor" opacity="0.7">"픽업 예정 몇 분 전부터, 라이더 없는 주문을 지연으로 볼까"</text>
+
+        <!-- 슬라이더 -->
+        <line x1="40" y1="82" x2="340" y2="82" stroke="var(--border)" stroke-width="4" stroke-linecap="round"/>
+        <line x1="40" y1="82" x2="140" y2="82" stroke="var(--orange)" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="140" cy="82" r="8" fill="var(--orange)" stroke="var(--surface)" stroke-width="2"/>
+        <text x="40" y="102" font-size="10.5" text-anchor="middle" fill="currentColor" opacity="0.6">0분</text>
+        <text x="340" y="102" font-size="10.5" text-anchor="middle" fill="currentColor" opacity="0.6">15분</text>
+        <text x="190" y="102" font-size="10.5" text-anchor="middle" fill="var(--orange)">올릴수록 더 일찍 잡힘 →</text>
+
+        <!-- 미니 타임라인 -->
+        <rect x="100" y="128" width="80" height="10" rx="2" fill="var(--orange)" opacity="0.25"/>
+        <rect x="180" y="128" width="160" height="10" rx="2" fill="var(--orange)"/>
+        <line x1="40" y1="148" x2="346" y2="148" stroke="currentColor" stroke-width="1" marker-end="url(#gArr)" opacity="0.6"/>
+        <line x1="100" y1="143" x2="100" y2="153" stroke="currentColor" opacity="0.6"/>
+        <line x1="180" y1="143" x2="180" y2="153" stroke="var(--orange)" stroke-width="2"/>
+        <circle cx="260" cy="148" r="5" fill="var(--ink)"/>
+        <text x="100" y="168" font-size="10.5" text-anchor="middle" fill="currentColor" opacity="0.7">12:20</text>
+        <text x="180" y="168" font-size="10.5" font-weight="700" text-anchor="middle" fill="var(--orange)">12:25</text>
+        <text x="260" y="168" font-size="10.5" font-weight="700" text-anchor="middle" fill="currentColor">12:30 픽업 예정</text>
+        <text x="140" y="122" font-size="10" text-anchor="middle" fill="var(--orange)" opacity="0.8">10분이면 여기부터</text>
+
+        <!-- 설명 -->
+        <text x="30" y="196" font-size="11.5" fill="currentColor"><tspan font-weight="700">기본 5분</tspan> → 12:25부터 배차지연 탭에 올라옴</text>
+        <text x="30" y="215" font-size="11.5" fill="currentColor"><tspan font-weight="700">10분으로 올리면</tspan> → 12:20부터 · 더 일찍, 더 많이</text>
+        <text x="30" y="234" font-size="11.5" fill="currentColor"><tspan font-weight="700">0분으로 내리면</tspan> → 12:30 무렵부터 · 급한 것만</text>
+        <text x="30" y="256" font-size="10.5" fill="currentColor" opacity="0.6">라이더가 없는 채로 예정시각을 넘겨도 계속 배차지연</text>
+
+        <!-- ===== 오른쪽 패널: 픽업지연 유예시간 ===== -->
+        <rect x="392" y="12" width="356" height="258" rx="10" fill="none" stroke="var(--border)"/>
+        <text x="410" y="38" font-size="13" font-weight="700" fill="var(--blue)">픽업지연 유예시간</text>
+        <text x="730" y="38" font-size="13" font-weight="700" text-anchor="end" fill="currentColor">0분</text>
+        <text x="410" y="56" font-size="11" fill="currentColor" opacity="0.7">"픽업 예정시각을 몇 분까지는 봐줄까" (라이더 있고 픽업 전)</text>
+
+        <!-- 슬라이더 -->
+        <line x1="420" y1="82" x2="720" y2="82" stroke="var(--border)" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="420" cy="82" r="8" fill="var(--blue)" stroke="var(--surface)" stroke-width="2"/>
+        <text x="420" y="102" font-size="10.5" text-anchor="middle" fill="currentColor" opacity="0.6">0분</text>
+        <text x="720" y="102" font-size="10.5" text-anchor="middle" fill="currentColor" opacity="0.6">15분</text>
+        <text x="570" y="102" font-size="10.5" text-anchor="middle" fill="var(--blue)">올릴수록 더 늦게 잡힘 →</text>
+
+        <!-- 미니 타임라인 -->
+        <rect x="480" y="128" width="240" height="10" rx="2" fill="var(--blue)"/>
+        <line x1="420" y1="148" x2="726" y2="148" stroke="currentColor" stroke-width="1" marker-end="url(#gArr)" opacity="0.6"/>
+        <circle cx="480" cy="148" r="5" fill="var(--ink)"/>
+        <line x1="560" y1="143" x2="560" y2="153" stroke="var(--blue)" stroke-width="2"/>
+        <text x="480" y="168" font-size="10.5" font-weight="700" text-anchor="middle" fill="currentColor">12:30 픽업 예정</text>
+        <text x="560" y="168" font-size="10.5" font-weight="700" text-anchor="middle" fill="var(--blue)">12:35</text>
+        <text x="560" y="122" font-size="10" text-anchor="middle" fill="var(--blue)" opacity="0.8">5분이면 여기부터</text>
+
+        <!-- 설명 -->
+        <text x="410" y="196" font-size="11.5" fill="currentColor"><tspan font-weight="700">기본 0분</tspan> → 12:30 넘는 순간 픽업지연 탭에 올라옴</text>
+        <text x="410" y="215" font-size="11.5" fill="currentColor"><tspan font-weight="700">5분으로 올리면</tspan> → 12:35부터 · 더 늦게, 더 적게</text>
+        <text x="410" y="234" font-size="11.5" fill="currentColor"><tspan font-weight="700">상점이 조리 완료</tspan> 누르면 → 유예 무시, 바로 올라옴</text>
+        <text x="410" y="256" font-size="10.5" fill="currentColor" opacity="0.6">예정시각을 넘겨도 라이더가 없으면 여기 아니라 배차지연</text>
+
+        <!-- 한 줄 요약 -->
+        <text x="380" y="298" font-size="12" text-anchor="middle" fill="currentColor">게이지는 주문을 바꾸지 않는다. <tspan font-weight="700">지연 탭에 올라오는 시점</tspan>만 바꾼다.</text>
+      </svg>
+      <figcaption>설정 화면의 두 슬라이더를 그대로 옮긴 그림. <strong>배차지연은 올릴수록 일찍·많이, 픽업지연은 올릴수록 늦게·적게</strong> 잡힌다. 둘 다 0~15분, 기기 단위로 저장된다.</figcaption>
+    </figure>
       </li>
       <li><strong>픽업지연 게이지(유예)</strong> — "픽업 예정시각을 <em>몇 분까지</em>는 봐줄까"
         <ul>
