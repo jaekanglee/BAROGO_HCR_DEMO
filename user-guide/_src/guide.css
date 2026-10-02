@@ -118,3 +118,16 @@ h3,figure,tr,details,.note{scroll-margin-top:72px}
 .dg .lane.dashl{stroke-dasharray:3 4}
 .verline{margin:10px 0 0;font-family:var(--mono);font-size:12px;color:var(--muted)}
 .verline a{color:inherit}
+
+.mmwrap .mm-wide{display:none}
+.mmwrap .mm-narrow{overflow-x:auto}
+.dg.mm{max-width:none;width:100%;min-width:340px}
+.mm-narrow .dg.mm{max-width:460px}
+.dg .mm-n .hit{fill:transparent}
+.dg .lf{fill:var(--fg);font-size:12px}
+.dg .mm-n:hover .lf,.dg .mm-n:focus-visible .lf{fill:var(--accent-text);text-decoration:underline}
+@media (min-width:1080px){
+  .mmwrap{width:1016px;margin-left:calc(50% - 508px)}
+  .mmwrap .mm-wide{display:block}
+  .mmwrap .mm-narrow{display:none}
+}

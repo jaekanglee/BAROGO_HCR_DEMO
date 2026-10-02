@@ -18,7 +18,7 @@ python3 build_guide.py   # → user-guide/index.html 생성 (Python 3 표준 라
 | `build_guide.py` | 장별 본문·스크린샷 배치·목차를 조립해 `index.html` 생성 |
 | `glossary.py` | 용어 장 데이터(분류별 용어, 두 앱이 다르게 부르는 말) |
 | `versions.py` | 기준 버전(앱·서버)과 변경 이력 |
-| `diagrams.py` | 기능 지도 등 인라인 SVG 다이어그램 5종 |
+| `diagrams.py` | 기능 지도 등 인라인 SVG 다이어그램 5종, 가이드 한눈에 보기(본문 장·소제목에서 자동 생성) |
 | `search_aliases.py` | 장·소제목별 검색 동의어. 키는 제목과 정확히 같아야 함(다르면 빌드 실패) |
 | `guide.css`, `guide.js` | 페이지 스타일, 검색·사진 확대 |
 

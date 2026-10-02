@@ -261,3 +261,117 @@ ALL = {"map": feature_map, "state": state_flow, "lane": dispatch_lanes, "set": s
 if __name__ == "__main__":
     for k, f in ALL.items():
         print(k, len(f()))
+
+
+# ------------------------------------------------------------------ 6. 가이드 지도(마인드맵)
+LEAF_FS = 12
+
+
+def _cut(s, maxw, fs):
+    if tw(s, fs) <= maxw:
+        return s
+    while s and tw(s + "…", fs) > maxw:
+        s = s[:-1]
+    return s.rstrip() + "…"
+
+
+def _elbow(x0, y0, xt, y1, x1):
+    """(x0,y0) → 가로로 xt → 세로로 y1 → 가로로 x1. 꺾이는 곳은 r=8."""
+    if abs(y1 - y0) < 1:
+        return f"M{x0} {y0} H{x1}"
+    r = min(8, abs(y1 - y0) / 2)
+    sx = 1 if xt > x0 else -1
+    sy = 1 if y1 > y0 else -1
+    ex = 1 if x1 > xt else -1
+    return (f"M{x0} {y0} H{xt - sx * r} Q{xt} {y0} {xt} {y0 + sy * r} "
+            f"V{y1 - sy * r} Q{xt} {y1} {xt + ex * r} {y1} H{x1}")
+
+
+class _MM(D):
+    def __init__(self, slug, title, desc, w, h):
+        super().__init__(slug, title, desc, h)
+        self.w = w
+
+    def leaf(self, x, y, text, href, full, anchor="start"):
+        w = tw(text, LEAF_FS)
+        x0 = x - w if anchor == "end" else x
+        self.nodes.append(
+            f'<a class="mm-n" href="{href}"><title>{esc(full)}</title>'
+            f'<rect class="hit" x="{x0 - 4}" y="{y - 10}" width="{w + 8}" height="20"/>'
+            f'<text class="lf" x="{x}" y="{y + 4}" text-anchor="{anchor}">{esc(text)}</text></a>')
+
+    def svg(self):
+        s = self.slug
+        return (f'<svg class="dg mm" viewBox="0 0 {self.w} {self.h}" width="{self.w}" role="img" '
+                f'aria-labelledby="{s}-title {s}-desc">'
+                f'<title id="{s}-title">{esc(self.title)}</title><desc id="{s}-desc">{esc(self.desc)}</desc>'
+                + "".join(self.lines) + "".join(self.nodes) + "</svg>")
+
+
+def _chap_node(d, x, y, w, i, title, href, short):
+    d.node(x, y - 14, w, 28, f"{i}. {short}", href=None)
+    d.nodes[-1] = f'<a class="mm-n" href="{href}"><title>{esc(title)} 장으로 이동</title>{d.nodes[-1]}</a>'
+
+
+def guide_map(chapters):
+    """chapters: [(id, 제목, 짧은 이름, [(h3 id, h3 제목), ...]), ...] — 본문에서 자동 추출."""
+    desc = "가이드의 모든 장과 소제목을 한 장에 펼친 지도. 이름을 누르면 해당 설명으로 이동한다."
+    ROW, GAP = 22, 12
+    rows = [max(1, len(sub)) for *_, sub in chapters]
+    # 행 수가 비슷하도록 왼쪽·오른쪽으로 나눈다(순서 유지)
+    total, acc, k = sum(rows), 0, 0
+    for k, r in enumerate(rows):
+        if acc + r / 2 >= total / 2:
+            break
+        acc += r
+    sides = [list(range(0, k)), list(range(k, len(chapters)))]
+
+    def heights(idx):
+        return sum(rows[i] * ROW for i in idx) + GAP * (len(idx) - 1)
+
+    H = r4(max(heights(sides[0]), heights(sides[1])) + 32)
+    CW, RW, W = 128, 128, 1016
+    root_x = (W - RW) / 2
+    cy_root = H / 2
+    wide = _MM("mm-w", "HCR 사용 가이드 지도", desc, W, H)
+    for side, idx in enumerate(sides):
+        left = side == 0
+        y = (H - heights(idx)) / 2
+        cx = root_x - 32 - CW if left else root_x + RW + 32      # 장 상자 x
+        trunk = root_x - 16 if left else root_x + RW + 16
+        for i in idx:
+            cid, title, short, sub = chapters[i]
+            bh = rows[i] * ROW
+            my = y + bh / 2
+            wide.line(_elbow(root_x if left else root_x + RW, cy_root, trunk, my, cx + CW if left else cx), "")
+            _chap_node(wide, cx, my, CW, i + 1, title, f"#{cid}", short)
+            ex = cx if left else cx + CW                              # 장 상자 바깥쪽 끝
+            lx = ex - 20 if left else ex + 20                         # 소제목 글자 시작
+            for j, (hid, ht) in enumerate(sub):
+                ly = y + ROW / 2 + j * ROW
+                wide.line(_elbow(ex, my, ex - 10 if left else ex + 10, ly, lx + (4 if left else -4)), "")
+                wide.leaf(lx, ly, _cut(ht, (lx - 8) if left else (W - lx - 8), LEAF_FS), f"#{hid}", ht, "end" if left else "start")
+            y += bh + GAP
+    wide.node(root_x, cy_root - 22, RW, 44, "HCR 사용 가이드", kind="focal")
+
+    # 폰: 한쪽으로 펼친 트리
+    NW, NX = 376, 8
+    NCW = 108
+    hh = sum(r * ROW for r in rows) + GAP * (len(rows) - 1)
+    nh = r4(hh + 16)
+    nar = _MM("mm-n", "HCR 사용 가이드 지도", desc, NW, nh)
+    y = 8
+    for i, (cid, title, short, sub) in enumerate(chapters):
+        bh = rows[i] * ROW
+        my = y + bh / 2
+        _chap_node(nar, NX, my, NCW, i + 1, title, f"#{cid}", short)
+        ex, lx = NX + NCW, NX + NCW + 20
+        for j, (hid, ht) in enumerate(sub):
+            ly = y + ROW / 2 + j * ROW
+            nar.line(_elbow(ex, my, ex + 10, ly, lx - 4), "")
+            nar.leaf(lx, ly, _cut(ht, NW - lx - 4, LEAF_FS), f"#{hid}", ht)
+        y += bh + GAP
+    for d in (wide, nar):
+        d.lines = [l.replace(' marker-end="url(#mm-w-a)"', "").replace(' marker-end="url(#mm-n-a)"', "") for l in d.lines]
+    return (f'<figure class="dgwrap mmwrap"><div class="mm-wide">{wide.svg()}</div>'
+            f'<div class="mm-narrow">{nar.svg()}</div></figure>')

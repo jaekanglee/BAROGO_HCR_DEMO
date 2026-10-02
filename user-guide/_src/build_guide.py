@@ -30,6 +30,12 @@ def table(head, rows):
     r = "".join("<tr>" + "".join(f"<td>{c}</td>" for c in row) + "</tr>" for row in rows)
     return f'<div class="tablewrap"><table><thead><tr>{h}</tr></thead><tbody>{r}</tbody></table></div>'
 
+# ---------------------------------------------------------------- 한눈에 보기
+C.append(chapter("overview", "가이드 한눈에 보기",
+  "가이드 전체 구성을 먼저 훑어보고, 필요한 곳으로 바로 가고 싶을 때",
+  '<p>가이드의 모든 장과 소제목을 한 장에 펼쳤습니다. 장 이름이나 소제목을 누르면 그 설명으로 이동합니다. 번호는 가이드에 나오는 순서입니다.</p>'
+  '{{DG_GUIDEMAP}}'))
+
 # ---------------------------------------------------------------- 시작하기
 C.append(chapter("start", "시작하기",
   "처음 로그인하는 분, 앱 전체 구성을 먼저 알고 싶은 분",
@@ -419,7 +425,7 @@ _vr += '<h3>기준 버전</h3>' + table(["대상", "버전", "시점"], [list(r)
 _vr += '<h3>변경 이력</h3>' + table(["가이드", "날짜", "바뀐 내용", "새 기준"], [[f"<b>v{a}</b>", b, c, d] for a, b, c, d in _VH])
 C.append(chapter("version", "버전과 변경 이력", "설명과 앱 화면이 다를 때, 무엇이 바뀌었는지 볼 때", _vr))
 
-NAV = [("start","시작하기"),("map","지도관제"),("list","목록관제"),("dispatch","배차하기"),("riderapp","라이더 앱"),("order","대리 접수"),("store","상점"),("rider","라이더"),("withdraw","출금"),("ops","운행 설정"),("more","내역·공지"),("settings","설정"),("role","권한"),("glossary","용어"),("faq","FAQ"),("version","버전")]
+NAV = [("overview","한눈에"),("start","시작하기"),("map","지도관제"),("list","목록관제"),("dispatch","배차하기"),("riderapp","라이더 앱"),("order","대리 접수"),("store","상점"),("rider","라이더"),("withdraw","출금"),("ops","운행 설정"),("more","내역·공지"),("settings","설정"),("role","권한"),("glossary","용어"),("faq","FAQ"),("version","버전")]
 nav = "".join(f'<a href="#{i}">{t}</a>' for i, t in NAV)
 
 CSS = open(os.path.join(S, "guide.css"), encoding="utf-8").read()
@@ -453,6 +459,15 @@ def _faq(m):
     _fq[0] += 1
     return f'<details id="faq-{_fq[0]}">'
 BODY = _re.sub(r"<details>", _faq, BODY)
+_short = dict(NAV)
+_chs = []
+for _m in _re.finditer(r'<section class="chap" id="([a-z]+)"><header><h2[^>]*>(.*?)</h2>(.*?)</section>', BODY, _re.S):
+    if _m.group(1) == "overview":
+        continue
+    _sub = [(a, _h.unescape(_re.sub(r"<[^>]+>", "", b))) for a, b in _re.findall(r'<h3 id="([^"]+)"[^>]*>(.*?)</h3>', _m.group(3))]
+    _chs.append((_m.group(1), _h.unescape(_re.sub(r"<[^>]+>", "", _m.group(2))), _short[_m.group(1)], _sub))
+assert "{{DG_GUIDEMAP}}" in BODY
+BODY = BODY.replace("{{DG_GUIDEMAP}}", _dg.guide_map(_chs))
 _missing = set(ALIASES) - _used
 assert not _missing, f"alias keys not found in headings: {_missing}"
 SEARCH_BTN = '<button type="button" class="sbtn" id="sbtn" aria-label="가이드 검색"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>검색</span><kbd>/</kbd></button>'
