@@ -88,7 +88,7 @@ class D:
 
 # ------------------------------------------------------------------ 1. 기능 지도
 def feature_map():
-    d = D("dg-map", "HCR 기능 지도",
+    d = D("dg-map", "허모 기능 지도",
           "지도관제·목록관제·마이페이지 세 탭에 들어 있는 주요 기능과, 배차와 대리 접수로 이어지는 진입 경로를 보여준다.", 584)
     L, R, NW, NH = 20, 196, 156, 48
     # zone A 지도관제
@@ -175,11 +175,11 @@ def state_flow():
 
 # ------------------------------------------------------------------ 3. 배차 흐름 (스윔레인)
 def dispatch_lanes():
-    d = D("dg-lane", "배차 흐름: 관제자 · HCR 앱 · 라이더 앱",
+    d = D("dg-lane", "배차 흐름: 관제자 · 허모 앱 · 라이더 앱",
           "관제자가 라이더를 고른 뒤 즉시배차는 바로 배차 탭으로, 배차요청은 라이더 앱의 승낙 또는 거절을 거쳐 배차 탭이나 접수 상태로 가는 흐름을 보여준다.", 496)
     for x in (124, 252):
         d.raw(f'<line class="lane" x1="{x}" y1="8" x2="{x}" y2="488"/>')
-    for x, t in ((62, "관제자"), (188, "HCR 앱"), (314, "라이더 앱")):
+    for x, t in ((62, "관제자"), (188, "허모 앱"), (314, "라이더 앱")):
         d.raw(f'<text class="zt" x="{x}" y="24" text-anchor="middle">{t}</text>')
     d.node(10, 48, 104, 48, "라이더 고르기", "지도·목록에서")
     d.node(136, 128, 104, 48, "배차요청 표시", "접수 탭에 남음")
@@ -241,11 +241,11 @@ def settings_matrix():
 # ------------------------------------------------------------------ 5. 배차요청 시퀀스
 def request_sequence():
     d = D("dg-seq", "배차요청이 오가는 순서",
-          "관제자가 HCR에서 배차요청을 보내면 서버가 라이더 앱에 알리고, 라이더가 15초 안에 승낙하거나 거절한 결과가 서버를 거쳐 HCR에 반영되는 순서를 보여준다.", 392)
+          "관제자가 허모에서 배차요청을 보내면 서버가 라이더 앱에 알리고, 라이더가 15초 안에 승낙하거나 거절한 결과가 서버를 거쳐 허모에 반영되는 순서를 보여준다.", 392)
     xs = {"h": 64, "s": 188, "r": 312}
     for k, x in xs.items():
         d.raw(f'<line class="lane dashl" x1="{x}" y1="52" x2="{x}" y2="384"/>')
-    d.node(14, 12, 100, 36, "HCR 앱")
+    d.node(14, 12, 100, 36, "허모 앱")
     d.node(138, 12, 100, 36, "서버")
     d.node(262, 12, 100, 36, "라이더 앱")
     d.line("M64 92 H182", "acc"); d.label(126, 68, "배차요청", "middle")
@@ -333,7 +333,7 @@ def guide_map(chapters):
     CW, RW, W = 128, 128, 1016
     root_x = (W - RW) / 2
     cy_root = H / 2
-    wide = _MM("mm-w", "HCR 사용 가이드 지도", desc, W, H)
+    wide = _MM("mm-w", "허모 사용 가이드 지도", desc, W, H)
     for side, idx in enumerate(sides):
         left = side == 0
         y = (H - heights(idx)) / 2
@@ -352,14 +352,14 @@ def guide_map(chapters):
                 wide.line(_elbow(ex, my, ex - 10 if left else ex + 10, ly, lx + (4 if left else -4)), "")
                 wide.leaf(lx, ly, _cut(ht, (lx - 8) if left else (W - lx - 8), LEAF_FS), f"#{hid}", ht, "end" if left else "start")
             y += bh + GAP
-    wide.node(root_x, cy_root - 22, RW, 44, "HCR 사용 가이드", kind="focal")
+    wide.node(root_x, cy_root - 22, RW, 44, "허모 사용 가이드", kind="focal")
 
     # 폰: 한쪽으로 펼친 트리
     NW, NX = 376, 8
     NCW = 108
     hh = sum(r * ROW for r in rows) + GAP * (len(rows) - 1)
     nh = r4(hh + 16)
-    nar = _MM("mm-n", "HCR 사용 가이드 지도", desc, NW, nh)
+    nar = _MM("mm-n", "허모 사용 가이드 지도", desc, NW, nh)
     y = 8
     for i, (cid, title, short, sub) in enumerate(chapters):
         bh = rows[i] * ROW
